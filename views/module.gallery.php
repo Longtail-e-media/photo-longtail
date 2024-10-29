@@ -355,7 +355,7 @@ if (defined('HOME_PAGE')) {
         $provdest = Destination::get_destination_bypradesh($i);
 
         foreach ($provdest as $j => $indest) {
-            $destination_list .= '<li><a href="' . BASE_URL . 'gallery-list/' . $indest->id . '">' . $indest->title . '</a></li>';
+            $destination_list .= '<li><a href="' . BASE_URL . 'portfolio-list/' . $indest->slug . '">' . $indest->title . '</a></li>';
         }
         $province .= '
         <div class="province_one">
