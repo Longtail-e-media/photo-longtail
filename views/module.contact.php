@@ -3,7 +3,7 @@
 * Contact form
 */
 $rescont = $innerbred = '';
-$img='';
+$img = '';
 if (defined('CONTACT_PAGE')) {
 
 
@@ -14,23 +14,28 @@ if (defined('CONTACT_PAGE')) {
     $lastElement = array_shift($telno);
     $tellinked .= '<a href="tel:' . $lastElement . '" target="_blank">' . $lastElement . '</a>/';
     foreach ($telno as $tel) {
-        
         $tellinked .= '<a href="tel:+977-' . $tel . '" target="_blank">' . $tel . '</a>';
-        if(end($telno)!= $tel){
-        $tellinked .= '/';
-        }   
-}
-$imglink= $siteRegulars->contact_upload ;
-if(!empty($imglink)){
-    $img= IMAGE_PATH . 'preference/contact/' . $siteRegulars->contact_upload ;
-}
-else{
-    $img='';
-}
-        // pr($siteRegulars);
+        if (end($telno) != $tel) {
+            $tellinked .= '/';
+        }
+    }
+    $imglink = $siteRegulars->contact_upload;
+    if (!empty($imglink)) {
+        $img = IMAGE_PATH . 'preference/contact/' . $siteRegulars->contact_upload;
+    } else {
+        $img = '';
+    }
+
+    $phone_tel = '';
+    $phones = explode(',', $siteRegulars->address);
+    foreach ($phones as $phone) {
+        $phone_tel .= '<a href="tel:+' . $phone . '" target="_blank">' . $phone . '</a>';
+        $phone_tel .= (end($phones) != $phone) ? '/' : '';
+    }
+    // pr($siteRegulars);
     $rescont .= '
        <!-- <div class="contact_banner_image text-center" 
-            style="background: linear-gradient(90deg, rgba(0, 0, 0, 0.4234068627) 0%, rgba(0, 0, 0, 0.3169642857) 100%), url('.$img.');background-size: cover; background-position: center; height: 300px; text-transform: uppercase; display: grid; place-items: center;">
+            style="background: linear-gradient(90deg, rgba(0, 0, 0, 0.4234068627) 0%, rgba(0, 0, 0, 0.3169642857) 100%), url(' . $img . ');background-size: cover; background-position: center; height: 300px; text-transform: uppercase; display: grid; place-items: center;">
             <nav aria-label="breadcrumb">
                 <h2 class="text-white">Contact</h2>
                 <ol class="breadcrumb text-white">
@@ -79,13 +84,13 @@ else{
               <div class="col-lg-6 col-md-6 col-sm-12 py-5">
                 <h2 class="contact__information">Contact Address</h2>
                 <ul class="list-unstyled">
-                  <li><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;'. $siteRegulars->fiscal_address .'</li>
-                  <!--<li><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;'. $tellinked .'</li>-->
-                  <li><i class="fa-solid fa-mobile"></i>&nbsp;&nbsp;<a href="tel:+977 9767649416">+977 9767649416</a></li>
-                  <li><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:'. $siteRegulars->email_address .'">'. $siteRegulars->email_address .'</a></li>
+                  <li><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;' . $siteRegulars->fiscal_address . '</li>
+                  <!--<li><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;' . $tellinked . '</li>-->
+                  <li><i class="fa-solid fa-mobile"></i>&nbsp;&nbsp;' . $phone_tel . '</li>
+                  <li><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:' . $siteRegulars->email_address . '">' . $siteRegulars->email_address . '</a></li>
                 </ul>
                 <div class="google_map mt-5">
-                  <iframe src="'. $siteRegulars->location_map .'"></iframe>
+                  <iframe src="' . $siteRegulars->location_map . '"></iframe>
                 </div>
               </div>
             </div>
