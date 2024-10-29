@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #cssportal-grid {
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px 10px;
+
+    }
+
+    #cssportal-grid img {
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (max-width:991px) {
+        #cssportal-grid {
+            grid-template-rows: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px 10px;
+        }
+
+        #cssportal-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+        }
+
+    }
+
+    @media (max-width:565px) {
+        #cssportal-grid {
+            grid-template-rows: repeat(1, 1fr);
+            grid-template-columns: repeat(1, 1fr);
+            gap: 10px 10px;
+
+        }
+    }
+
+    @media(min-width:992px) {
+
+
+        #div1 {
+            grid-area: 1/1/2/2;
+
+        }
+
+        #div2 {
+            grid-area: 1/2/2/3;
+
+        }
+
+        #div4 {
+            grid-area: 2/1/3/2;
+        }
+
+        #div5 {
+            grid-area: 2/2/3/3;
+        }
+
+        #div7 {
+            grid-area: 3 / 1 / 5 / 2;
+        }
+
+        #div8 {
+            grid-area: 3/2/4/3;
+        }
+
+        #div9 {
+            grid-area: 3/3/4/4;
+        }
+
+        #div11 {
+            grid-area: 4/2/5/3;
+        }
+
+        #div12 {
+            grid-area: 4/3/5/4;
+        }
+
+        #div13 {
+            grid-area: 1 / 3 / 3 / 4;
+        }
+    }
+</style>
+
+<body>
+    <div id="cssportal-grid">
+        <div id="div1"><img src="./images/1.jpg"></div>
+        <div id="div2"><img src="./images/2.jpg"></div>
+        <div id="div4"><img src="./images/8.jpg"></div>
+        <div id="div5"><img src="./images/5.jpg" alt=""></div>
+        <div id="div7"><img src="./images/6.jpg" alt=""></div>
+        <div id="div8"><img src="./images/7.jpg" alt=""></div>
+        <div id="div9"><img src="./images/1.jpg" alt=""></div>
+        <div id="div11"><img src="./images/5.jpg" alt=""></div>
+        <div id="div12"><img src="./images/8.jpg" alt=""></div>
+        <div id="div13"><img src="/images/3.jpg" alt=""></div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <jcms:site:seotitle/>
+
+    <!-- Fevicon -->
+    <jcms:site:fevicon/>
+
+  <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'>
+  <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css'>
+  <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css'>
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href='//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css'>
+  <link rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery-bundle.min.css'/>
+
+  <!-- start head script -->
+  <link rel="stylesheet" href="css/be-style.css">
+  <script src="js/be-script.js"></script>
+  <!-- end head script -->
+  
+  
+  
+   <style>
+        
+        .grid {
+        }
+        
+        /* clear fix */
+        .grid:after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+        
+        /* ---- .grid-item ---- */
+        
+        .grid-sizer,
+        .grid-item {
+          width: 33.333%;
+        }
+        
+        .grid-item {
+          float: left;
+        }
+        
+        .grid-item img {
+          display: block;
+          max-width: 100%;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+<!-- navbar -->
+<jcms:module:header/>
+<!-- navbar end -->
+
+<!-- date picker -->
+<!--<jcms:module:booking_undergallery/>-->
+<!-- date picker end -->
+
+
+<!-- inner banner -->
+<jcms:module:gallery-bread />
+<!-- inner banner end -->
+<!--  -->
+<!-- gallerr images -->
+
+  
+</div>
+
+  </div>
+</div>
+ <jcms:module:gallery-detail/>
+
+
+
+<!-- gallerr images end -->
+
+  <!-- new footer -->
+<jcms:module:footer-booking/>
+<!-- new footer end -->
+
+
+
+
+<script>
+//     lightGallery(document.getElementById('customize-thumbnails-gallery'), {
+//     // Add a custom class to apply style only for the particular gallery
+//     addClass: 'lg-custom-thumbnails',
+
+//     // Remove the starting animations.
+//     // This can be done by overriding CSS as well
+//     appendThumbnailsTo: '.lg-outer',
+
+//     animateThumb: false,
+//     allowMediaOverlap: true,
+// });
+
+    lightGallery(document.getElementById('lightgallery'), {
+        plugins: [lgZoom, lgThumbnail],
+        licenseKey: 'your_license_key',
+        speed: 500,
+            thumbnail: true,
+        // ... other settings
+    });
+
+</script>
+
+  <script src="js/jquery.min.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.umd.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.umd.min.js'></script>
+        <script src='https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js'></script>
+
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js'></script>
+  <script src='https://code.jquery.com/ui/1.13.2/jquery-ui.js'></script>
+   <script src="js/index.js"></script> 
+          <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>-->
+    
+    <script>
+    $(window).on('load', function() {
+        console.log('window load');
+        var $grid = $('.grid').masonry({
+          itemSelector: '.grid-item',
+          percentPosition: true,
+          columnWidth: '.grid-sizer'
+        });
+        // layout Masonry after each image loads
+        $grid.imagesLoaded().progress( function() {
+          $grid.masonry(layout);
+        });  
+    })
+    </script>
+    
+    
+  <script>
+    $(document).ready(function(){
+      // Initialize Isotope
+      var $grid = $('.image_gallery').isotope({
+        itemSelector: '.element-item',
+      });
+  
+      // Filter items on button click
+      $('.filter-button-group').on('click', 'button', function() {
+        var filterValue = $(this).attr('data-filter');
+        $grid.isotope({ filter: filterValue });
+        // Refresh layout after filtering
+      });
+    });
+  </script>
+  <Script>
+    lightGallery(document.getElementById('lightgallery'), {
+    selector: 'a',
+})
+  </Script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+@mixin inner_banner_image($background){
+    background: linear-gradient(90deg, rgba(0,0,0,0.4234068627450981) 0%, rgba(0,0,0,0.3169642857142857) 100%), $background;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    text-transform: uppercase;
+    display: grid;
+    place-items: center;
+
+}

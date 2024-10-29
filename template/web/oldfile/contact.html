@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Crystal Pashupati</title>
+  <link rel="shortcut icon" href="image/logo/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg bg-light position-fixed top-0 z-3 w-100  nav_bar">
+    <div class="container">
+      <a class="navbar-brand" href="https://crystalpashupati.com/project/index.html"><img src="image/logo/logo.png" width="80px;" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar_contact">
+        <ul>
+          <li><i class="fa-solid fa-phone"></i><a href="tel:+977-1-4575700"> +977-1-4575700</a>&nbsp;|&nbsp;<a href="tel:+977-9767649416">9767649416</a></li>
+       <li><i class="fa-solid fa-location-arrow"></i><a href="https://maps.app.goo.gl/MJ6LNtbEQgmqaxch9" target="_blank"> Get Directions</a></li></ul>
+      </div>
+      <div class="collapse navbar-collapse navbar_gaping" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase">
+          <li class="nav-item px-3">
+            <a class="nav-link" aria-current="page" href="hotel.html">Hotel</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="rooms.html">Rooms</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="dining.html">Dining</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="events.html">Events</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item px-3 active">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- navbar end -->
+<!-- date picker -->
+<div class="date_box_wrapper">
+  <div class="date_pickers date__ajax">
+    <div class="container">
+        <form action="">
+        <div class="row gx-3 justify-content-center">
+        <div class="col-md-3 mb-3 mb-sm-0">
+          <div class="form-group position-relative">
+            <input type="text" class="form-control " id="Check_in" placeholder="Check In" class="pt-3">
+            <i class="fa-regular fa-calendar-check icon_calender"></i>
+          </div>
+        </div>
+        <div class="col-md-3 mb-3 mb-sm-0">
+          <div class="form-group position-relative">
+            <input type="text" class="form-control" id="Check_out" placeholder="Check Out" class="pt-3">
+            <i class="fa-regular fa-calendar-check icon_calender"></i>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button type="submit" id="book_now" class="btn btn__action w-100">Book Now</button>
+        </div>
+        </div>
+        </form>
+          </div>
+    </div>
+</div>
+<!-- date picker end -->
+          <!-- inner banner -->
+          <div class="contact_banner_image text-center">
+            <nav aria-label="breadcrumb">
+              <h2 class="text-white">Contact</h2>
+              <ol class="breadcrumb text-white">
+                <li class="breadcrumb-item"><a href="/" class="text-white text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+              </ol>
+            </nav>
+        </div>
+        <!-- inner banner end -->
+        <!-- form content -->
+        <div class="container margin_20">
+<div class="contact_form">
+<div class="row gx-md-5">
+  <div class="col-lg-6 col-md-6 col-sm-12 contact_background-color">
+    <h2 class="Contact_us">Contact Us</h2>
+   <form action="" id="contact_form">
+    <div class="mb-4">
+        <input type="text" class="form-control" id="" name="name" aria-describedby="name" placeholder="Full Name">
+      </div>
+      <div class="mb-4">
+        <input type="email" class="form-control" id="" name="email" aria-describedby="name" placeholder="Email">
+      </div>
+      <div class="mb-4">
+        <input type="text" class="form-control" id="" name="contact" aria-describedby="name" placeholder="Contact No.">
+      </div>
+      <div class="mb-4">
+        <input type="Subject" class="form-control" id="" name="subject" aria-describedby="subject" placeholder="Subject">
+      </div>
+      <div class="mb-4">
+        <textarea class="form-control" id="textarea" rows="3" name="message" Placeholder="Message"></textarea>
+      </div>
+      <div class="mb-4">
+      <div id="result_msg"></div>
+      </div>
+<div class="mb-4">
+  <div class="g-recaptcha" data-sitekey="6LcJdJspAAAAAOMSDeSzpDwDHqexpELexIkhOPck"></div>
+</div>
+<button type="submit" id="submit" class="btn enquiry_btn">Submit</button>
+    </form>
+
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-12 py-5">
+    <h2 class="contact__information">Contact Information</h2>
+<ul class="list-unstyled">
+  <li><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;Gaushala, Kathmandu, Nepal</li>
+  <li><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;<a href="tel:+977 1-4575700">+977 1-4575700</a> | <a href="tel:+977 1-4575800">+977 1-4575800</a></li>
+ <li><i class="fa-solid fa-mobile"></i>&nbsp;&nbsp;<a href="tel:+977 9767649416">+977 9767649416</a> </li>
+  <li><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:front@crystalpashupati.com">front@crystalpashupati.com</a></li>
+</ul>
+<div class="google_map mt-5">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3532.2960906863045!2d85.34384702456029!3d27.70814292618212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1708320391822!5m2!1sen!2snp"></iframe>
+</div>
+  </div>
+</div>
+
+</div>
+        </div>
+        <!-- form content end -->
+  <!-- new footer -->
+<div class="container mt-5 footer_ajax"></div>
+<!-- new footer end -->
+
+  <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-validate.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script src="js/index.js"></script>
+   <script type="text/javascript">
+        // var base_url = $('base').attr('url');
+        $(document).ready(function () {
+            $('#contact_form').validate({
+                errorElement: 'span',
+                errorClass: 'validate-has-error',
+                rules: {
+                    name: {required: true},
+                    email: {required: true, email: true},
+                    contact: {required: true},
+                    subject: {required: true},
+                    message: {required: true}
+                },
+                messages: {
+                    name: {required: "Please enter your Name."},
+                    email: {required: "Please enter your email."},
+                    contact: {required: "Please enter your Phone Number."},
+                    subject: {required: "Please enter your Subject."},
+                    message: {required: "Please enter your Message."}
+                },
+                submitHandler: function (form) {
+                    var recaptcha = $("#g-recaptcha-response").val();
+                if (recaptcha === "") {
+                    event.preventDefault();
+                    alert("Please check the recaptcha");
+                    return false;
+                }
+                    var Frmval = $("form#contact_form").serialize();
+                    $("button#submit").attr("disabled", "true").text('Processing...');
+                    $.ajax({
+                        type: "POST",
+                        dataType: "JSON",
+                        url: "inquiry_mail.php",
+                        data: "action=cont_form&" + Frmval,
+                        success: function (data) {
+                            var msg = eval(data);
+                            $("button#submit").removeAttr("disabled").text('Submit');
+                            $('div#result_msg').html(msg.message).css('display', 'block').fadeOut(8000);
+                            $("form#contact_form")[0].reset();
+                        }
+                    });
+                    return false;
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

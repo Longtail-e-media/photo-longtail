@@ -1,0 +1,54 @@
+#block-search, #block-search * {
+    box-sizing: border-box;
+}
+
+#block-search {
+    background: #F1EEEE;
+}
+
+.be-container {
+    max-width: 1356px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+#be-booking-form {
+    z-index: 1;
+}
+
+.booking_banner_image {
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.4234068627) 0%, rgba(0, 0, 0, 0.3169642857) 100%), url('/dynamic/images/package/banner/n1mkv-roomlistbanner.jpg');
+    background-size: cover;
+    background-position: bottom;
+    height: 300px;
+    text-transform: uppercase;
+    display: grid;
+    place-items: center;
+}
+
+.navbar_onscroll {
+    position: fixed!important;
+}
+
+.be-booking-btn {
+    display: block;
+    width: fit-content;
+    padding: 11px 30px;
+    margin: 30px 0;
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: 13.5px;
+    font-style: normal;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    background: #c11010;
+    border-radius: 6px;
+}
+
+.be-booking-btn:hover {
+    background: #e71313;
+}
+
+.booking-page .social_icons {
+    display: none;
+}

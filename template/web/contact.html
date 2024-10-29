@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <jcms:site:seotitle/>
+
+  <!-- Fevicon -->
+  <jcms:site:fevicon/>
+  <link rel="shortcut icon" href="image/logo/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'>
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+
+  <!-- start head script -->
+  <link rel="stylesheet" href="css/be-style.css">
+  <script src="js/be-script.js"></script>
+  <!-- end head script -->
+</head>
+
+<body>
+
+<!-- navbar -->
+<jcms:module:header/>
+<!-- navbar end -->
+
+<!-- date picker -->
+<!--<jcms:module:booking_undergallery/>-->
+<!-- date picker end -->
+
+
+<jcms:module:contact-us/>
+<!-- inner banner end -->
+
+<!-- form content -->
+<!-- form content end -->
+
+<!-- new footer -->
+<jcms:module:footer-booking/>
+<!-- new footer end -->
+
+  <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-validate.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+   <script src="js/index.js"></script> 
+   <script type="text/javascript">
+        // var base_url = $('base').attr('url');
+        $(document).ready(function () {
+            $('#contact_form').validate({
+                errorElement: 'span',
+                errorClass: 'validate-has-error',
+                rules: {
+                    name: {required: true},
+                    email: {required: true, email: true},
+                    contact: {required: true},
+                    subject: {required: true},
+                    message: {required: true}
+                },
+                messages: {
+                    name: {required: "Please enter your Name."},
+                    email: {required: "Please enter your email."},
+                    contact: {required: "Please enter your Phone Number."},
+                    subject: {required: "Please enter your Subject."},
+                    message: {required: "Please enter your Message."}
+                },
+                submitHandler: function (form) {
+                    var recaptcha = $("#g-recaptcha-response").val();
+                if (recaptcha === "") {
+                    event.preventDefault();
+                    alert("Please check the recaptcha");
+                    return false;
+                }
+                    var Frmval = $("form#contact_form").serialize();
+                    $("button#submit").attr("disabled", "true").text('Processing...');
+                    $.ajax({
+                        type: "POST",
+                        dataType: "JSON",
+                        url: "inquiry_mail.php",
+                        data: "action=cont_form&" + Frmval,
+                        success: function (data) {
+                            var msg = eval(data);
+                            $("button#submit").removeAttr("disabled").text('Submit');
+                            $('div#result_msg').html(msg.message).css('display', 'block').fadeOut(8000);
+                            $("form#contact_form")[0].reset();
+                        }
+                    });
+                    return false;
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>
