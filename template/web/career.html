@@ -72,20 +72,20 @@
                     <div class="d-flex">
                         <div class="col-lg-6 pe-5">
                             <div class="mb-4">
-                                <input type="text" class="form-control" id="fname" placeholder="First Name" name="fname">
+                                <input type="text" class="form-control" id="fname" placeholder="First Name*" name="fname">
                             </div>
                             <div class="mb-4">
-                                <input type="text" class="form-control" id="lname" placeholder="Last Name" name="lname">
+                                <input type="text" class="form-control" id="lname" placeholder="Last Name*" name="lname">
                             </div>
                             <div class="mb-4">
-                                <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                                <input type="email" class="form-control" id="email" placeholder="Email Address*" name="email">
                             </div>
                             <div class="mb-4">
-                                <input type="text" class="form-control" id="phone" placeholder="Contact No." name="phone">
+                                <input type="text" class="form-control" id="phone" placeholder="Contact No.*" name="phone">
                             </div>
                             <div class="mb-4">
                                 <select class="form-select" aria-label="career form" name="career" id="career">
-                                    <option selected value="">Choose your career</option>
+                                    <option selected value="">Choose your career*</option>
                                     <option value="Photographer">Photographer</option>
                                     <option value="Videographer">Videographer</option>
                                     <option value="Video_editor">Video Editor</option>
@@ -97,7 +97,7 @@
                         <div class="col-lg-6">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Upload Your CV</label>
+                                    <label>Upload Your CV*</label>
                                     <div class="file">
                                         <i class="fa fa-file"></i>
                                         <input type="file" id="FileAttachment" name="myfile" id="myFile">
@@ -109,7 +109,7 @@
                             </div>
                             <div class="col-md-12 mt-3">
                                 <div class="form-group">
-                                    <label>Upload Your Photo</label>
+                                    <label>Upload Your Photo*</label>
                                     <div class="file">
                                         <i class="fa fa-image"></i>
                                         <input type="file" name="myfile1">
@@ -121,7 +121,7 @@
                             </div>
                             <div class="col-md-12 mt-3">
                                 <div class="form-group">
-                                    <label>Upload Citizenship</label>
+                                    <label>Upload Citizenship*</label>
                                     <div class="file">
                                         <i class="fa fa-file"></i>
                                         <input type="file" name="myfile2">
@@ -133,7 +133,7 @@
                             </div>
                             <div class="col-md-12 mt-3">
                                 <div class="form-group">
-                                    <label>Upload Your Coverletter / Application</label>
+                                    <label>Upload Your Coverletter / Application*</label>
                                     <div class="file">
                                         <i class="fa fa-file"></i>
                                         <input type="file" name="myfile3">
@@ -211,8 +211,8 @@
                     fname: {required: "This field is required.", minlength: "Your name must consist of at least 2 characters"},
                     lname: {required: "This field is required.", minlength: "Your name must consist of at least 2 characters"},
                     email: {required: "This field is required.", email: "Enter Correct Email "},
-                    phone: {required: "Contact number is required"},
-                    career: {required: "Career is required"},
+                    phone: {required: "This field is required"},
+                    career: {required: "This field is required"},
                     myfile: {required: "You need to attach your CV."},
                     myfile1: {required: "You need to upload your photo."},
                     myfile2: {required: "You need to attach your Citizenship."},
