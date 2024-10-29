@@ -1767,7 +1767,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 }
 .filter-dropdown {
   right: 2.5rem;
-  top: -7px;
+  top: 0;
   z-index: 10;
 }
 .hidden-menu{
@@ -1824,10 +1824,14 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 .dropdownMenu{
   transition: ease 0.6s;
 }
-.dropdown-filter-parent{
-  position:sticky;
-  top:70px;
-  z-index:1040;
+.dropdown-filter-parent {
+  position: sticky;
+  top: 64px;
+  z-index: 1040;
+  height: 38px;
+  /* backdrop-filter: blur(10px);
+  background: hsl(0deg 0% 100% / 20%); */
+
 }
 .black{
   color: rgb(73, 70, 70) !important;
@@ -1876,17 +1880,18 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
   font-size: 12px;
 }
 .enquiry_btn.contact-btn,.career-btn{
-  background-color: var(--color-orange);
+  background-color: var(--color-orange) !important;
   color: white !important;
   border: none !important;
   outline: none !important;
   border-radius: 9px;
+  padding: 0.4rem 1.3rem;
 }
 .career-btn{
-  width: 50%;
+  width: auto !important;
 }
 .career-btn:hover{
-  background-color: #f55215;
+  background-color: var(--color-orange);
 }
 .dropdown.search_dropdown input{
   margin-right: 10px;
@@ -1971,4 +1976,6 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
     transform: translateX(-99%);
   }
 }
-    
+.main-portfolio-title{
+  margin: 3rem 0;
+}

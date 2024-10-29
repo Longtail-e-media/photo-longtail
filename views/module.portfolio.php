@@ -58,10 +58,10 @@ if (defined('PORTFOLIO_PAGE')) {
 
     $thegalnew = '
         <div class="row mt-6 position-relative">
-            <!--<div class="hotel_hospitality text-center">
+            <div class="hotel_hospitality text-center main-portfolio-title">
                 <h2>Hotels and Hospitality Portfolio</h2>
                 <p>Unleashing Hospitality Excellence: Journey Through Our Portfolio </p>
-            </div>-->
+            </div>
             <div class="dropdown-filter-parent">
                 <div class="filter-dropdown position-absolute">
                     <div class="d-flex justify-content-end" id="filterDropdown">
@@ -115,13 +115,13 @@ if (defined('PORTFOLIO_LIST_PAGE')) {
         $collapsed = ($i == $provdata) ? '' : 'collapsed';
         $accordion .= '
                 <div class="accordion-item">
-                    <h2 class="accordion-header">
+                    <h2 class="accordion-header accord-title">
                       <button class="accordion-button ' . $collapsed . ' type="button" data-bs-toggle="collapse" data-bs-target="#collapse' . $i . '" aria-expanded="' . $expanded . '" aria-controls="collapse' . $i . '">
                          ' . $provincedata["$i"] . '
                       </button>
                     </h2>
                     <div id="collapse' . $i . '" class="accordion-collapse collapse' . $show . '" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
+                      <div class="accordion-body accord-body">
                             ' . $accbod . '
                       </div>
                     </div>
@@ -143,10 +143,10 @@ if (defined('PORTFOLIO_LIST_PAGE')) {
             $file_path = SITE_ROOT . 'images/gallery/' . $indhot->image;
             if (file_exists($file_path) and !empty($indhot->image)) {
                 $hotedettail .= ' 
-                    <div class="grid-item">
+                    <div class="grid-item inner-images">
                         <a href="' . BASE_URL . 'portfolio/' . $indhot->slug . '">
                             <div class="forname">' . $indhot->title . '</div>
-                            <img src="' . IMAGE_PATH . 'gallery/' . $indhot->image . '" />
+                            <img src="' . IMAGE_PATH . 'gallery/' . $indhot->image . '" class="gallery-image"/>
                         </a>
                      </div>
                 ';
@@ -169,10 +169,10 @@ if (defined('PORTFOLIO_LIST_PAGE')) {
 
     $thegal = '
         <div class="row mt-6">
-            <!--<div class="hotel_hospitality text-center">
+            <div class="hotel_hospitality text-center main-portfolio-title">
                 <h2>Hotels and Hospitality Portfolio</h2>
                 <p>Unleashing Hospitality Excellence: Journey Through Our Portfolio </p>
-            </div>-->
+            </div>
             <div class="position-relative">
                 <div class="filter-dropdown position-absolute">
                     <div class="d-flex justify-content-end" id="filterDropdown">
@@ -185,7 +185,7 @@ if (defined('PORTFOLIO_LIST_PAGE')) {
                     </div>
                 </div>
             </div>
-            <div class = "col-md-12 col-sm-12 mt-5">
+            <div class = "col-md-12 col-sm-12 mt-5 img-gallery-container">
                 <div class="grid" data-masonry= \'{ "itemSelector": ".grid-item" }\'>
                 <div class="grid-sizer"></div>
                     ' . $hotedettail . '
