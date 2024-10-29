@@ -1979,3 +1979,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 .main-portfolio-title{
   margin: 3rem 0;
 }
+.validate-has-error:not(input){
+  font-size:12px;
+  display: block;
+}
