@@ -23,7 +23,7 @@ RewriteRule ^page/([a-zA-Z0-9-=_.]+)$ inner.php?slug=$1 [L]
 RewriteRule ^gallery-list/?$ gallery-list.php [L]
 RewriteRule ^gallery-list/([a-zA-Z0-9-]+)?$ gallery.php?slug=$1 [L]
 RewriteRule ^gallery-detail/?$ gallery-detail.php [L]
-RewriteRule ^hotel-detail/([a-zA-Z0-9-]+)?$ gallery-detail?slug=$1 [L]
+RewriteRule ^hotel-detail/([a-zA-Z0-9-]+)?$ gallery-detail.php?slug=$1 [L]
 
 #For Portfolio page
 RewriteRule ^portfolio/?$ portfolio.php [L]
