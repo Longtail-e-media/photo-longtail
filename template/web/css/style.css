@@ -11,7 +11,7 @@
   --font-helvetika: Arial, Helvetica, sans-serif;
   /* colors */
   --color-red: #c11010;
-  --color-orange: #f55215;
+  --color-orange: #772a53;
   --color-background-white: #f1eeee;
   --color-filter: brightness(0) saturate(100%) invert(35%) sepia(69%) saturate(2377%) hue-rotate(354deg) brightness(99%) contrast(94%);
   --line-height: 2;
@@ -33,6 +33,7 @@ body {
 }
 .nav-item.active {
   background-color: var(--color-orange);
+  border-radius: 9px;
 }
 
 li.nav-item.active a {
@@ -48,7 +49,8 @@ li.nav-item.active a {
 .btn.show,
 .btn:first-child:active,
 :not(.btn-check)+.btn:active {
-  color: var(--color-red) !important;
+  color: #fff !important;
+  background-color: var(--color-orange);
 }
 
 .table> :not(caption)>*>* {
@@ -1763,8 +1765,9 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 .custom-placeholder::placeholder {
   color: rgb(73, 70, 70);
 }
-.filter-dropdown{
-  right: 5rem;
+.filter-dropdown {
+  right: 2.5rem;
+  top: -7px;
   z-index: 10;
 }
 .hidden-menu{
@@ -1810,6 +1813,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
   padding: 0.4rem 1rem;
   border: none;
   color: white;
+  border-radius: 9px;
 }
 #filterDropdown span{
   margin-left: 0.4rem;
@@ -1823,7 +1827,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 .dropdown-filter-parent{
   position:sticky;
   top:70px;
-  z-index:1500;
+  z-index:1040;
 }
 .black{
   color: rgb(73, 70, 70) !important;
@@ -1872,11 +1876,11 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
   font-size: 12px;
 }
 .enquiry_btn.contact-btn,.career-btn{
-  background-color: #f55215;
+  background-color: var(--color-orange);
   color: white !important;
   border: none !important;
   outline: none !important;
-  border-radius: 0 !important;
+  border-radius: 9px;
 }
 .career-btn{
   width: 50%;
@@ -1918,3 +1922,53 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 .image-holder > video{
   height: 100%;
 }
+.inner-images{
+  padding: 10px;
+}
+.inner-portfolio-title,.career-title{
+  margin: 2rem 0 5rem 0 !important;
+}
+.img-gallery-container{
+  padding: 0 2rem;
+}
+.contact-title{
+  margin: 6rem 0 5rem 0 !important;
+}
+#loadMoreImages{
+  background-color: var(--color-orange);
+  color: white;
+  outline: none;
+  border: none;
+  padding: 0.5rem 2rem;
+  border-radius: 9px;
+}
+.loader {
+  width: 70%;
+  height: 4.8px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+.loader::after {
+  content: '';  
+  width: 96px;
+  height: 2.8px;
+  background: var(--color-orange);
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  animation: hitZak 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes hitZak {
+  0% {
+    left: 0;
+    transform: translateX(-1%);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(-99%);
+  }
+}
+    

@@ -29,7 +29,7 @@ else{
 }
         // pr($siteRegulars);
     $rescont .= '
-        <div class="contact_banner_image text-center" 
+       <!-- <div class="contact_banner_image text-center" 
             style="background: linear-gradient(90deg, rgba(0, 0, 0, 0.4234068627) 0%, rgba(0, 0, 0, 0.3169642857) 100%), url('.$img.');background-size: cover; background-position: center; height: 300px; text-transform: uppercase; display: grid; place-items: center;">
             <nav aria-label="breadcrumb">
                 <h2 class="text-white">Contact</h2>
@@ -38,13 +38,16 @@ else{
                   <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
                 </ol>
             </nav>
-        </div>
+        </div> -->
         
         <div class="container margin_20">
+        <div class="text-wrapper mb-4 contact-title">
+                <h5 class="mt-4 text-uppercase text-center">Contact Us</h5>
+            </div>
           <div class="contact_form">
             <div class="row gx-md-5">
               <div class="col-lg-6 col-md-6 col-sm-12 contact_background-color">
-                <h2 class="Contact_us">Contact Us</h2>
+                <h2 class="Contact_us">Message Us</h2>
                 <form action="" id="contact_form">
                   <div class="mb-4">
                     <input type="text" class="form-control" id="" name="name" aria-describedby="name" placeholder="Full Name">
@@ -74,7 +77,7 @@ else{
         
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 py-5">
-                <h2 class="contact__information">Contact Information</h2>
+                <h2 class="contact__information">Address</h2>
                 <ul class="list-unstyled">
                   <li><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;'. $siteRegulars->fiscal_address .'</li>
                   <!--<li><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;'. $tellinked .'</li>-->

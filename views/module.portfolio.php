@@ -218,9 +218,9 @@ if (defined('PORTFOLIO_DETAIL')) {
         $file_path = SITE_ROOT . 'images/gallery/galleryimages/' . $row1->image;
         if (file_exists($file_path) and !empty($row1->image)):
             $gallcoll .= ' 
-                <div class="grid-item  ">
+                <div class="grid-item inner-images">
                     <a href="' . IMAGE_PATH . 'gallery/galleryimages/' . $row1->image . '">
-                      <img src="' . IMAGE_PATH . 'gallery/galleryimages/' . $row1->image . '" alt="' . $row1->title . '">
+                      <img src="' . IMAGE_PATH . 'gallery/galleryimages/' . $row1->image . '" alt="' . $row1->title . '" class="gallery-image">
                     </a> </div>
                 ';
         endif;
@@ -230,7 +230,7 @@ if (defined('PORTFOLIO_DETAIL')) {
         <div class="hotel_decrown_inn container-fluid">
             <div class="row mt-6">
                 <div class="col-lg-12">
-                    <div class="hotel_hospitality text-center ">
+                    <div class="hotel_hospitality text-center inner-portfolio-title">
                         <h2>' . $indhot->title . '</h2>
                         <!--<p>' . strip_tags($indhot->content) . '</p>-->
                     </div>

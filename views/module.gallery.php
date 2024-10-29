@@ -72,7 +72,7 @@ if (!empty($imglink)) {
 }
 
 $gallerybread = '
-<div class="gallery_banner_image text-center" style="background: linear-gradient(90deg, rgba(0, 0, 0, 0.4234068627) 0%, rgba(0, 0, 0, 0.3169642857) 100%), url(' . $img . ');
+<!-- <div class="gallery_banner_image text-center" style="background: linear-gradient(90deg, rgba(0, 0, 0, 0.4234068627) 0%, rgba(0, 0, 0, 0.3169642857) 100%), url(' . $img . ');
  background-size: cover;
   background-position: center;
   height: 300px;
@@ -86,7 +86,7 @@ $gallerybread = '
               <li class="breadcrumb-item text-white active" aria-current="page">Gallery</li>
             </ol>
           </nav>
-      </div>
+      </div> -->
 ';
 
 $jVars['module:gallery-bread'] = $gallerybread;
@@ -154,13 +154,13 @@ if (defined('GALLERY_PAGE')) {
         $collapsed = ($i == $provdata) ? '' : 'collapsed';
         $accordion .= '
                 <div class="accordion-item">
-                    <h2 class="accordion-header">
+                    <h2 class="accordion-header accord-title">
                       <button class="accordion-button ' . $collapsed . ' type="button" data-bs-toggle="collapse" data-bs-target="#collapse' . $i . '" aria-expanded="' . $expanded . '" aria-controls="collapse' . $i . '">
                          ' . $provincedata["$i"] . '
                       </button>
                     </h2>
                     <div id="collapse' . $i . '" class="accordion-collapse collapse' . $show . '" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
+                      <div class="accordion-body accord-body">
                             ' . $accbod . '
                       </div>
                     </div>
@@ -183,11 +183,11 @@ if (defined('GALLERY_PAGE')) {
             if (file_exists($file_path) and !empty($indhot->image)) {
                 $hotedettail .= ' 
     
-                        <div class="grid-item">
+                        <div class="grid-item inner-images">
                               <a href="' . BASE_URL . 'hotel-detail/' . $indhot->id . '">
         
                                 <div class="forname">' . $indhot->title . '</div>
-                                <img src="' . IMAGE_PATH . 'gallery/' . $indhot->image . '" />
+                                <img src="' . IMAGE_PATH . 'gallery/' . $indhot->image . '" class="gallery-image"/>
                             </a>
                          </div>
     
@@ -215,7 +215,7 @@ if (defined('GALLERY_PAGE')) {
     $thegal = '
     
    <div class="row mt-6">
-        <div class="hotel_hospitality text-center">
+        <div class="hotel_hospitality text-center inner-portfolio-title">
         <h2>Hotels and Hospitality Portfolio</h2>
         <p>Unleashing Hospitality Excellence: Journey Through Our Portfolio </p>
       </div>
@@ -231,7 +231,7 @@ if (defined('GALLERY_PAGE')) {
                 </div>
           </div>
       </div>
-    <div class = "col-md-12 col-sm-12 mt-5">
+    <div class = "col-md-12 col-sm-12 mt-5 img-gallery-container">
                 <div class="grid" data-masonry= \'{ "itemSelector": ".grid-item" }\'>
                   <div class="grid-sizer"></div>
                   ' . $hotedettail . '
@@ -470,10 +470,10 @@ if (defined('GALLERY_LIST_PAGE')) {
 
     $thegalnew = '
        <div class="row mt-6 position-relative">
-            <!--<div class="hotel_hospitality text-center">
+            <div class="hotel_hospitality text-center inner-portfolio-title">
                 <h2>Hotels and Hospitality Portfolio</h2>
                 <p>Unleashing Hospitality Excellence: Journey Through Our Portfolio </p>
-            </div>-->
+            </div>
             <div class="dropdown-filter-parent">
                 <div class="filter-dropdown position-absolute">
                     <div class="d-flex justify-content-end" id="filterDropdown">

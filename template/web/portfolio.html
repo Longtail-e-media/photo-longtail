@@ -76,7 +76,10 @@
 
 <jcms:module:portfolio-list-all/>
 
-<div id="loading" class="text-center"></div>
+<div id="loading" class="d-flex justify-content-center">
+    <span class="loader"></span>
+</div>
+<div id="loadMore" class="text-center"></div>
 
 
 <!-- gallerr images end -->
@@ -132,14 +135,14 @@
     //     });
     // })
 
-    function triggerLightGallery(itemId) {
+    function triggerLightGallery(itemId){
         const $element = $("#" + itemId);
-
+    
         // Destroy any existing LightGallery instance
         if ($element.data('lightGallery')) {
             $element.data('lightGallery').destroy(true);
         }
-
+        
         // Initialize LightGallery
         lightGallery($element[0], {
             selector: 'a',
@@ -154,31 +157,45 @@
             columnWidth: '.grid-item',
             percentPosition: true
         });
-
+        var htmlContent = ' <button id="loadMoreImages">Load more</button>'
+        var pageCounter = 1;
+        function loadMoreImages (){
+            pageCounter ++;
+            loadImages(pageCounter);
+        }
+        function beforeLoading(){
+            $('#loadMore').css('display','none');
+            $('.loader').css('display','block');
+        }
+        function afterLoading(){
+            $('#loadMore').css('display','block');
+            $('#loadMore').html(htmlContent);
+            $('.loader').css('display','none');
+        }
         function loadImages(page = 1) {
             $.ajax({
                 url: base_url + 'ajax_images.php', // This is your PHP file that loads images
                 data: {page: page},
-                beforeSend: function () {
-                    $('#loading').html('<h1>Loading ... </h1>');
-                },
+                beforeSend: beforeLoading(),
                 success: function (data) {
                     var $items = $(data);
                     // Ensure all images are loaded before Masonry layout
-                    $items.imagesLoaded(function () {
+                    $items.imagesLoaded(function() {
                         // Append the items to Masonry and re-layout
                         $grid.append($items).masonry('appended', $items);
                         $grid.masonry('layout'); // Explicitly call layout after appending
-
-                        $('#loading').html('');
-
+                        afterLoading();
+                        $('#loadMoreImages').on('click',function(){
+                            loadMoreImages();
+                        })
+                        
                         // $items.on('click', '.gallery-image', function(e) {
-                        //     e.preventDefault();
-                        //     let ancestorId = $(this).closest('.zoom-img-container').attr('id'); 
-                        //     triggerLightGallery(ancestorId);
-                        // });  
-                        // console.log($items);
-                    });
+                            //     e.preventDefault();
+                            //     let ancestorId = $(this).closest('.zoom-img-container').attr('id'); 
+                            //     triggerLightGallery(ancestorId);
+                            // });  
+                            // console.log($items);
+                        });
                 }
             });
         }
@@ -187,34 +204,34 @@
         loadImages();
 
         // Infinite scroll
-        $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200) {
-                var currentPage = parseInt($('#masonry-grid').attr('data-page')) || 1;
-                loadImages(currentPage + 1);
-                $('#masonry-grid').attr('data-page', currentPage + 1);
-            }
-        });
+        // $(window).scroll(function () {
+        //     if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200) {
+        //         // var currentPage = parseInt($('#masonry-grid').attr('data-page')) || 1;
+        //         loadImages(pageCounter + 1);
+        //         $('#masonry-grid').attr('data-page', pageCounter + 1);
+        //     }
+        // });
+        
 
-
+        
     });
 
-    $(document).on('click', '.gallery-image', function (e) {
+    $(document).on('click','.gallery-image', function(e) {
         e.preventDefault();
-        let ancestorId = $(this).closest('.zoom-img-container').attr('id');
-
+        let ancestorId = $(this).closest('.zoom-img-container').attr('id'); 
+        
         const $element = $("#" + ancestorId);
 
         lightGallery($element[0], {
             selector: 'a',
         });
-
+        
         // Initialize LightGallery after a short delay
         const firstImage = $element.find('a').first(); // Get the first image link
         if (firstImage.length) {
             firstImage[0].click(); // Trigger click on the first image to open the gallery
         }
     })
-
 </script>
 
 
