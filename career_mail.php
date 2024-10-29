@@ -100,6 +100,7 @@ if ($_POST['action'] == "forcareer"):
     if (!$mail->Send()) {
         echo json_encode(array("action" => "unsuccess", "message" => "We could not sent your request at the time. Please try again later."));
     } else {
-        echo json_encode(array("action" => "success", "message" => "Your request has been successfully sent, You will be shortly informed through mail when you verified by admin."));
+        echo json_encode(array("action" => "success",
+            "message" => "Thank you for submitting your CV. We appreciate your interest in joining our team. Our HR team will review your application, and if your qualifications match our requirements, we will contact you for the next steps."));
     }
 endif;
