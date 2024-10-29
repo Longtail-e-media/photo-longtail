@@ -77,7 +77,7 @@ else{
         
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 py-5">
-                <h2 class="contact__information">Address</h2>
+                <h2 class="contact__information">Contact Address</h2>
                 <ul class="list-unstyled">
                   <li><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;'. $siteRegulars->fiscal_address .'</li>
                   <!--<li><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;'. $tellinked .'</li>-->
