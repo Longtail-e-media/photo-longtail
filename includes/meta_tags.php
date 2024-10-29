@@ -18,6 +18,18 @@ function className_metatags()
         exit;
     endif;
 
+    if ($fileName == 'portfolios'):
+        $className = 'destination';
+        return $className;
+        exit;
+    endif;
+
+    if ($fileName == 'portfolio-detail'):
+        $className = 'gallery';
+        return $className;
+        exit;
+    endif;
+
     if ($fileName == 'subpkgdetail'):
         $className = 'Subpackage';
         return $className;

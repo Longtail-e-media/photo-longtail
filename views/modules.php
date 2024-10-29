@@ -37,6 +37,7 @@ endforeach;
 // view modules
 
 require_once("views/module.contact.php");
+require_once("views/module.portfolio.php");
 
 require_once("views/module.reservation.php");
 require_once("views/module.header.php");

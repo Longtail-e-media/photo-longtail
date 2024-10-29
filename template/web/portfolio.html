@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <jcms:site:seotitle/>
+
+    <!-- Fevicon -->
+    <jcms:site:fevicon/>
+
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'>
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css'>
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css'>
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href='//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css'>
+    <link rel="stylesheet" href="css/style.css">
+    <!--<link type="text/css" rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery-bundle.min.css'/>-->
+
+    <!-- start head script -->
+    <!--<link rel="stylesheet" href="css/be-style.css">-->
+    <!--<script src="js/be-script.js"></script>-->
+    <!-- end head script -->
+
+
+    <style>
+        /*.grid {*/
+        /*    display: flex;*/
+        /*    flex-wrap: wrap;*/
+        /*}*/
+
+        /*.grid-item {*/
+        /*    width: 30%; !* You can adjust the width *!*/
+        /*    margin: 5px;*/
+        /*    background: #eee;*/
+        /*    box-sizing: border-box;*/
+        /*}*/
+
+        /*.grid-item img {*/
+        /*    display: block;*/
+        /*    width: 100%;*/
+        /*    height: auto;*/
+        /*}*/
+
+        /* Responsive design for tablets */
+        @media (max-width: 768px) {
+            .grid-item {
+                width: 48.2%; /* 2 columns */
+            }
+        }
+
+        /* Responsive design for mobile phones */
+        @media (max-width: 480px) {
+            .grid-item {
+                width: 100%; /* Single column for small screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- navbar -->
+<jcms:module:header/>
+<!-- navbar end -->
+
+<!-- date picker -->
+<!--<jcms:module:booking_undergallery/>-->
+<!-- date picker end -->
+
+
+<!-- inner banner -->
+<jcms:module:gallery-brea d/>
+<!-- inner banner end -->
+<!--  -->
+<!-- gallerr images -->
+
+
+<jcms:module:portfolio-list-all/>
+
+<div id="loading" class="text-center"></div>
+
+
+<!-- gallerr images end -->
+
+<!-- new footer -->
+<jcms:module:footer-booking/>
+<!-- new footer end -->
+
+
+<script>
+
+    // lightGallery(document.getElementById('lightgallery'), {
+    //     plugins: [lgZoom, lgThumbnail],
+    //     licenseKey: 'your_license_key',
+    //     speed: 500,
+    //         thumbnail: true,
+    //     // ... other settings
+    // });
+
+</script>
+
+<script src="js/jquery.min.js"></script>
+<!--<script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js'></script>-->
+<!--<script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.umd.min.js'></script>-->
+<!--<script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.umd.min.js'></script>-->
+<script src='https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js'></script>
+
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js'></script>
+<script src='https://code.jquery.com/ui/1.13.2/jquery-ui.js'></script>
+<script src="js/index.js"></script>
+<script src="js/dropdown.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>-->
+
+<!-- ImagesLoaded to trigger layout after images are loaded -->
+<script src='https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js'></script>
+
+<script>
+    // $(window).on('load', function () {
+    //     console.log('window load');
+    //     var $grid = $('.grid').masonry({
+    //         itemSelector: '.grid-item',
+    //         percentPosition: true,
+    //         columnWidth: '.grid-sizer'
+    //     });
+    //     // layout Masonry after each image loads
+    //     $grid.imagesLoaded().progress(function () {
+    //         $grid.masonry(layout);
+    //     });
+    // })
+
+    function triggerLightGallery(itemId) {
+        const $element = $("#" + itemId);
+
+        // Destroy any existing LightGallery instance
+        if ($element.data('lightGallery')) {
+            $element.data('lightGallery').destroy(true);
+        }
+
+        // Initialize LightGallery
+        lightGallery($element[0], {
+            selector: 'a',
+        });
+    }
+
+    $(document).ready(function () {
+        var base_url = $('base').attr('url');
+
+        var $grid = $('#masonry-grid').masonry({
+            itemSelector: '.grid-item',
+            columnWidth: '.grid-item',
+            percentPosition: true
+        });
+
+        function loadImages(page = 1) {
+            $.ajax({
+                url: base_url + 'ajax_images.php', // This is your PHP file that loads images
+                data: {page: page},
+                beforeSend: function () {
+                    $('#loading').html('<h1>Loading ... </h1>');
+                },
+                success: function (data) {
+                    var $items = $(data);
+                    // Ensure all images are loaded before Masonry layout
+                    $items.imagesLoaded(function () {
+                        // Append the items to Masonry and re-layout
+                        $grid.append($items).masonry('appended', $items);
+                        $grid.masonry('layout'); // Explicitly call layout after appending
+
+                        $('#loading').html('');
+
+                        // $items.on('click', '.gallery-image', function(e) {
+                        //     e.preventDefault();
+                        //     let ancestorId = $(this).closest('.zoom-img-container').attr('id'); 
+                        //     triggerLightGallery(ancestorId);
+                        // });  
+                        // console.log($items);
+                    });
+                }
+            });
+        }
+
+        // Load initial images
+        loadImages();
+
+        // Infinite scroll
+        $(window).scroll(function () {
+            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200) {
+                var currentPage = parseInt($('#masonry-grid').attr('data-page')) || 1;
+                loadImages(currentPage + 1);
+                $('#masonry-grid').attr('data-page', currentPage + 1);
+            }
+        });
+
+
+    });
+
+    $(document).on('click', '.gallery-image', function (e) {
+        e.preventDefault();
+        let ancestorId = $(this).closest('.zoom-img-container').attr('id');
+
+        const $element = $("#" + ancestorId);
+
+        lightGallery($element[0], {
+            selector: 'a',
+        });
+
+        // Initialize LightGallery after a short delay
+        const firstImage = $element.find('a').first(); // Get the first image link
+        if (firstImage.length) {
+            firstImage[0].click(); // Trigger click on the first image to open the gallery
+        }
+    })
+
+</script>
+
+
+</body>
+
+</html>

@@ -22,6 +22,7 @@ if (!empty($desthot)) {
         // $gallRec = GalleryImage::getGalleryImages($indhot->id);
         $file_path = SITE_ROOT . 'images/gallery/galleryimages/' . $indhot->image;
         $propertyName = Gallery::field_by_id($indhot->galleryid, 'title');
+        $propertySlug = Gallery::field_by_id($indhot->galleryid, 'slug');
         if (file_exists($file_path) and !empty($indhot->image)) {
             echo ' 
                     <div class="grid-item">
@@ -30,7 +31,7 @@ if (!empty($desthot)) {
                             <img src="' . IMAGE_PATH . 'gallery/galleryimages/' . $indhot->image . '" class="gallery-image"/>
                         </a>
                     </div>
-                        <a href="' . BASE_URL . 'hotel-detail/' . $indhot->galleryid . '">
+                        <a href="' . BASE_URL . 'portfolio/' . $propertySlug . '">
                         <div class="fortitle gallery-img-title">' . $indhot->title . '</div>
                         <div class="forname gallery-img-content">' . $propertyName . '</div>
                         </a>
@@ -39,7 +40,7 @@ if (!empty($desthot)) {
         } else {
             echo ' 
                     <div class="grid-item">
-                        <a href="' . BASE_URL . 'hotel-detail/' . $indhot->galleryid . '">
+                        <a href="' . BASE_URL . 'portfolio/' . $propertySlug . '">
                             <div class="fortitle">' . $indhot->title . '</div>
                             <div class="forname">' . $indhot->title . '</div>
                             <img src="' . IMAGE_PATH . 'preference/other/' . $siteRegulars->other_upload . '" />
