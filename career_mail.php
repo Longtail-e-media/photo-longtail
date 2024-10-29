@@ -86,6 +86,17 @@ if ($_POST['action'] == "forcareer"):
 //        $mail->AddAttachment($file_to_attach);
 //    }
 
+    $attach1 = SITE_ROOT . 'images/career/' . $record->myfile;
+    $attach2 = SITE_ROOT . 'images/career/' . $record->photo;
+    $attach3 = SITE_ROOT . 'images/career/' . $record->citizenship;
+    $attach4 = SITE_ROOT . 'images/career/' . $record->cover_letter;
+
+    $mail->AddAttachment($attach1);
+    $mail->AddAttachment($attach2);
+    $mail->AddAttachment($attach3);
+    $mail->AddAttachment($attach4);
+
+
     if (!$mail->Send()) {
         echo json_encode(array("action" => "unsuccess", "message" => "We could not sent your request at the time. Please try again later."));
     } else {

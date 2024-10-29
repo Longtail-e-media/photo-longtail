@@ -229,7 +229,7 @@
                         success: function (data) {
                             var msg = eval(data);
                             jQuery("button#submit").removeAttr("disabled").html('Apply Now');
-                            jQuery('div#msg').html(msg.message).css('display', 'block').fadeOut(10000);
+                            jQuery('div#msg').html(msg.message).css('display', 'block').addClass('alert alert-success').fadeOut(10000);
                             jQuery("form#careerform")[0].reset();
                             $('#responseFile').html("");
                             /*setTimeout(function () {
