@@ -23,23 +23,31 @@ if (defined('PORTFOLIO_PAGE')) {
     for ($i = 1; $i <= 7; $i++) {
         $provdest = Destination::get_destination_bypradesh($i);
         $accbod = '';
-
-        foreach ($provdest as $j => $indest) {
-            if ($j == 0 && $i == 1) {
-                $firstdes = $indest->id;
-            }
-            $accbod .= '<li><a href="' . BASE_URL . 'portfolio-list/' . $indest->slug . '">' . $indest->title . '</a></li>';
-        }
+        $destination_nav = '';
 
         $expanded = ($i == $provdata) ? 'true' : 'false';
         $show = ($i == $provdata) ? 'show' : '';
         $collapsed = ($i == $provdata) ? '' : 'collapsed';
-        $accordion .= '
-            <div class="accordion-item">
-                <h2 class="accordion-header accord-title">
+
+        foreach ($provdest as $j => $indest) {
+            $resGallery = Gallery::getParentgallery_by_destination($indest->id);
+            if(!empty($resGallery)){
+                $destination_nav = '
                     <button class="accordion-button ' . $collapsed . '" type="button" data-bs-toggle="collapse" data-bs-target="#collapse' . $i . '" aria-expanded="' . $expanded . '" aria-controls="collapse' . $i . '">
                     ' . $provincedata["$i"] . '
                     </button>
+                ';
+                if ($j == 0 && $i == 1) {
+                    $firstdes = $indest->id;
+                }
+                $accbod .= '<li><a href="' . BASE_URL . 'portfolio-list/' . $indest->slug . '">' . $indest->title . '</a></li>';
+            }
+        }
+
+        $accordion .= '
+            <div class="accordion-item">
+                <h2 class="accordion-header accord-title">
+                    ' . $destination_nav . '
                 </h2>
                 <div id="collapse' . $i . '" class="accordion-collapse collapse ' . $show . '" data-bs-parent="#accordionExample">
                     <div class="accordion-body accord-body">
@@ -101,24 +109,31 @@ if (defined('PORTFOLIO_LIST_PAGE')) {
     for ($i = 1; $i <= 7; $i++) {
         $provdest = Destination::get_destination_bypradesh($i);
         $accbod = '';
-
-        foreach ($provdest as $j => $indest) {
-            if ($j == 0 && $i == 1) {
-                $firstdes = $indest->id;
-            }
-            $accbod .= '<li><a href="' . BASE_URL . 'portfolio-list/' . $indest->slug . '">' . $indest->title . '</a></li>';
-        }
-
+        $destination_nav = '';
 
         $expanded = ($i == $provdata) ? 'true' : 'false';
         $show = ($i == $provdata) ? 'show' : '';
         $collapsed = ($i == $provdata) ? '' : 'collapsed';
+
+        foreach ($provdest as $j => $indest) {
+            $resGallery = Gallery::getParentgallery_by_destination($indest->id);
+            if(!empty($resGallery)){
+                $destination_nav = '
+                    <button class="accordion-button ' . $collapsed . ' type="button" data-bs-toggle="collapse" data-bs-target="#collapse' . $i . '" aria-expanded="' . $expanded . '" aria-controls="collapse' . $i . '">
+                         ' . $provincedata["$i"] . '
+                      </button>
+                ';
+                if ($j == 0 && $i == 1) {
+                    $firstdes = $indest->id;
+                }
+                $accbod .= '<li><a href="' . BASE_URL . 'portfolio-list/' . $indest->slug . '">' . $indest->title . '</a></li>';
+            }
+        }
+
         $accordion .= '
                 <div class="accordion-item">
                     <h2 class="accordion-header accord-title">
-                      <button class="accordion-button ' . $collapsed . ' type="button" data-bs-toggle="collapse" data-bs-target="#collapse' . $i . '" aria-expanded="' . $expanded . '" aria-controls="collapse' . $i . '">
-                         ' . $provincedata["$i"] . '
-                      </button>
+                      ' . $destination_nav . '
                     </h2>
                     <div id="collapse' . $i . '" class="accordion-collapse collapse' . $show . '" data-bs-parent="#accordionExample">
                       <div class="accordion-body accord-body">
