@@ -252,7 +252,7 @@ if (defined('PORTFOLIO_DETAIL')) {
 
                     <div class="goback-btn-parent">
                         <div class="goback-btn-container">
-                        <a href="'.BASE_URL.'portfolio-list/'.Destination::field_by_id($indhot->destinationId,'slug').'" class="goback-btn"><i class="fa fa-arrow-left"></i> Go back</a>
+                        <a href="'.BASE_URL.'portfolio-list/'.Destination::field_by_id($indhot->destinationId,'slug').'" class="goback-btn"><i class="fa fa-arrow-left"></i> Get Back</a>
                         </div>
                     </div>
                     <div class = "mt-4" id="lightgallery">
