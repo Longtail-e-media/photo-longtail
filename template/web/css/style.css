@@ -1950,7 +1950,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 .loader {
   width: 70%;
   height: 4.8px;
-  display: inline-block;
+  display: none;
   position: relative;
   overflow: hidden;
 }
@@ -2001,4 +2001,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
   padding: 0.4rem 1rem;
   margin-right: 10px;
   text-decoration: none;
+}
+:not(.dropdown.search_dropdown input:focus) + .dropdown-list {
+  display: none;
 }
