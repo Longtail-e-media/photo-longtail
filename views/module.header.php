@@ -3,15 +3,15 @@ $siteRegulars = Config::find_by_id(1);
 $booking_code = Config::getField('hotel_code', true);
 $header = ob_start();
 $tellinked = '';
-    $telno = explode(",", $siteRegulars->contact_info);
-    $lastElement = array_shift($telno);
-    $tellinked .= '<a href="tel:' . $lastElement . '" target="_blank">' . $lastElement . '</a>|';
-    foreach ($telno as $tel) {
-        
-        $tellinked .= '<a href="tel:+977-' . $tel . '" target="_blank">' . $tel . '</a>';
-        if(end($telno)!= $tel){
+$telno = explode(",", $siteRegulars->contact_info);
+$lastElement = array_shift($telno);
+$tellinked .= '<a href="tel:' . $lastElement . '" target="_blank">' . $lastElement . '</a>|';
+foreach ($telno as $tel) {
+
+    $tellinked .= '<a href="tel:+977-' . $tel . '" target="_blank">' . $tel . '</a>';
+    if (end($telno) != $tel) {
         $tellinked .= '|';
-        }   
+    }
 }
 ?>
     <!-- header info begin -->
@@ -21,10 +21,15 @@ $tellinked = '';
                 <div class="col-md-9">
                     <ul class="header-contact">
                         <li class="icon_location">
-                            <a href="<?= $siteRegulars->contact_info2 ?>" target="_blank"><?= $siteRegulars->fiscal_address ?></a>
+                            <a href="<?= $siteRegulars->contact_info2 ?>"
+                               target="_blank"><?= $siteRegulars->fiscal_address ?></a>
                         </li>
-                        <li class="icon_phone"><a href="tel:<?= $siteRegulars->contact_info ?>"><?= $siteRegulars->contact_info ?></a></li>
-                        <li class="icon_email"><a href="mailto:<?= $siteRegulars->email_address ?>"><?= $siteRegulars->email_address ?></a></li>
+                        <li class="icon_phone"><a
+                                    href="tel:<?= $siteRegulars->contact_info ?>"><?= $siteRegulars->contact_info ?></a>
+                        </li>
+                        <li class="icon_email"><a
+                                    href="mailto:<?= $siteRegulars->email_address ?>"><?= $siteRegulars->email_address ?></a>
+                        </li>
                     </ul>
                 </div>
 
@@ -50,7 +55,8 @@ $tellinked = '';
                     <!-- logo begin -->
                     <div id="logo">
                         <div class="inner">
-                            <a href="<?= BASE_URL ?>home"><img src="<?= IMAGE_PATH ?>preference/<?= $siteRegulars->logo_upload ?>" alt="logo"></a>
+                            <a href="<?= BASE_URL ?>home"><img
+                                        src="<?= IMAGE_PATH ?>preference/<?= $siteRegulars->logo_upload ?>" alt="logo"></a>
                         </div>
                     </div>
                     <!-- logo close -->
@@ -110,37 +116,36 @@ $header = '
 <nav class="navbar navbar-expand-lg bg-transparent top-0 z-3 w-100  nav_bar py-0">
     <div class="container-fluid position-absolute navbar__height translucent-navbar">
           <div class="collapse navbar-collapse flex-grow-0 navbar_gaping" id="navbarSupportedContent">
-      '. $jVars['module:res-menu'] .'
+      ' . $jVars['module:res-menu'] . '
       </div>
-      <a class="navbar-brand navbar__position" href="'. BASE_URL .'"><img src="'. IMAGE_PATH . 'preference/' . $siteRegulars->logo_upload .'" width="120px;" alt=""></a>
+      <a class="navbar-brand navbar__position" href="' . BASE_URL . '"><img src="' . IMAGE_PATH . 'preference/' . $siteRegulars->logo_upload . '" width="120px;" alt=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
         <div class="dropdown search_dropdown" id="dropdownContainer">
-        <img src="'.BASE_URL.'template/web/image/icons/search.svg">
+        <img src="' . BASE_URL . 'template/web/image/icons/search.svg">
             <input type="text" class="dropdown-input" id="searchInput" placeholder="SEARCH" autocomplete="off">
             <div class="dropdown-list" id="dropdownList"></div>
         </div>
     </div>
   </nav>
             ';
-            $optionlinks ='';
-            $allrec = Gallery::find_all();
-            foreach($allrec as $indrec){
-                $destdet = !empty($indrec->destinationId) ? Destination::find_by_id($indrec->destinationId) : '';
-                $dest = (!empty($destdet)) ? ', ' . $destdet->title : '';
-                $pradesh = (!empty($destdet)) ? '- ' . $destdet->pradesh : '';
-                
-                $optionlinks .="{ text: '".$indrec->title . $dest . $pradesh ."', url: '".BASE_URL . 'hotel-detail/'. $indrec->id ."' },";
-            }
-            
-$headerscript .="
+$optionlinks = '';
+$allrec = Gallery::find_all();
+foreach ($allrec as $indrec) {
+    $destdet = !empty($indrec->destinationId) ? Destination::find_by_id($indrec->destinationId) : '';
+    $dest = (!empty($destdet)) ? ', ' . $destdet->title : '';
+    $pradesh = (!empty($destdet)) ? '- ' . $destdet->pradesh : '';
+
+    $optionlinks .= "{ text: '" . $indrec->title . "', url: '" . BASE_URL . 'portfolio/' . $indrec->slug . "' },";
+}
+
+$headerscript .= "
    
     <script>
         const options = [
-            ". $optionlinks ."
-            // Add more options as needed...
+            " . $optionlinks . "
         ];
         
         const searchInput = document.getElementById('searchInput');
