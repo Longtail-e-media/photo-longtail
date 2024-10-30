@@ -188,7 +188,7 @@ if (defined('PORTFOLIO_LIST_PAGE')) {
                 <h2>Hotels and Hospitality Portfolio</h2>
                 <p>Unleashing Hospitality Excellence: Journey Through Our Portfolio </p>
             </div>
-            <div class="position-relative">
+            <div class="dropdown-filter-parent">
                 <div class="filter-dropdown position-absolute">
                     <div class="d-flex justify-content-end" id="filterDropdown">
                         <button class="" onclick="dropFunction()">Search by location <span><i class="fa fa-chevron-down" id="dropIcon"></i></span></button>
@@ -252,7 +252,7 @@ if (defined('PORTFOLIO_DETAIL')) {
 
                     <div class="goback-btn-parent">
                         <div class="goback-btn-container">
-                        <a href="'.BASE_URL.'portfolio-list/'.Destination::field_by_id($indhot->destinationId,'slug').'" class="goback-btn"><i class="fa fa-arrow-left"></i> Go back</a>
+                        <a href="'.BASE_URL.'portfolio-list/'.Destination::field_by_id($indhot->destinationId,'slug').'" class="goback-btn"><i class="fa fa-arrow-left"></i> Get Back</a>
                         </div>
                     </div>
                     <div class = "mt-4" id="lightgallery">
