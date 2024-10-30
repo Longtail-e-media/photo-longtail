@@ -246,7 +246,7 @@ if (isset($_GET['page']) && $_GET['page'] == "user" && isset($_GET['mode']) && $
                     </div>
                 </div>
                 <?php if (!empty($usersInfo) && $usersInfo->group_id== 2){ ?>
-                <div class="form-row">
+                <!--<div class="form-row">
                     <div class="form-label col-md-2">
                         <label for="">
                             Hall Email :
@@ -257,7 +257,7 @@ if (isset($_GET['page']) && $_GET['page'] == "user" && isset($_GET['mode']) && $
                                id="hall_email" name="hall_email"
                                value="<?php echo !empty($usersInfo->hall_email) ? $usersInfo->hall_email : ""; ?>">
                     </div>
-                </div>
+                </div>-->
                 <div class="form-row">
                     <div class="form-label col-md-2">
                         <label for="">

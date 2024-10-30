@@ -7,7 +7,7 @@ $siteRegulars = Config::find_by_id(1);
 
 // Pagination settings
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-$limit = 21; // Number of images per page
+$limit = 12; // Number of images per page
 $offset = ($page - 1) * $limit;
 
 // Query to fetch random images from the tbl_gallery_images table

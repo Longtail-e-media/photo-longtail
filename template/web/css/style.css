@@ -1538,7 +1538,11 @@ button.search_icons{
 div#dropdownList {
   position: absolute;
   background: #f9f3f1;
+<<<<<<< HEAD
   width: 200px;
+=======
+  width: max-content;
+>>>>>>> 5597a2d2c09c3b7de391082d50689011d9869a00
   right: 0;
   padding-inline: 12px;
   font-weight: 300;
@@ -1843,8 +1847,8 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 }
 /****************/
 .fortitle.gallery-img-title,.forname.gallery-img-content{
- position: static;
- color: #080808;
+  position: static;
+  color: #080808;
   text-transform: none;
   text-shadow: none;
 
@@ -1916,15 +1920,15 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 }
 .image_slide p{
   position: absolute;
-    z-index: 1;
-    /* width: 900px;*/
-    color: #fff;
-    left: 0%;
-    font-size: 18px;
-    bottom: 7%;
-    transform: translate(30%, 0%);
-    /* text-shadow: -4px 2px 14px rgb(0, 0, 0); */
-    font-weight: 400;
+  z-index: 1;
+  /* width: 900px;*/
+  color: #fff;
+  left: 0%;
+  font-size: 18px;
+  bottom: 7%;
+  transform: translate(30%, 0%);
+  /* text-shadow: -4px 2px 14px rgb(0, 0, 0); */
+  font-weight: 400;
 }
 .image-holder > video{
   height: 100%;
@@ -1957,7 +1961,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
   overflow: hidden;
 }
 .loader::after {
-  content: '';  
+  content: '';
   width: 96px;
   height: 2.8px;
   background: var(--color-orange);
@@ -2043,4 +2047,5 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 }
 .three-container img{
   width: 100%;
+
 }
