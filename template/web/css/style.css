@@ -1936,8 +1936,8 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 .img-gallery-container{
   padding: 0 2rem;
 }
-.contact-title{
-  margin: 6rem 0 5rem 0 !important;
+.contact-title,.career-title{
+  margin: 9rem 0 6rem 0 !important
 }
 #loadMoreImages{
   background-color: var(--color-orange);
@@ -1982,4 +1982,22 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 .validate-has-error:not(input){
   font-size:12px;
   display: block;
+}
+.goback-btn-parent{
+  position: sticky;
+  top: 64px;
+  z-index: 1040;
+}
+.goback-btn-container{
+  display: flex;
+  justify-content: flex-end;
+}
+.goback-btn{
+  border: none;
+  outline: none;
+  background-color: var(--color-orange);
+  color: white;
+  border-radius: 9px;
+  padding: 0.4rem 1rem;
+  margin-right: 10px;
 }

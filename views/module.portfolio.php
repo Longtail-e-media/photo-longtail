@@ -229,10 +229,16 @@ if (defined('PORTFOLIO_DETAIL')) {
     $thegal = '
         <div class="hotel_decrown_inn container-fluid">
             <div class="row mt-6">
-                <div class="col-lg-12">
+                <div class="col-lg-12 position-relative">
                     <div class="hotel_hospitality text-center inner-portfolio-title">
                         <h2>' . $indhot->title . '</h2>
                         <!--<p>' . strip_tags($indhot->content) . '</p>-->
+                    </div>
+
+                    <div class="goback-btn-parent">
+                        <div class="goback-btn-container">
+                        <a href="'.BASE_URL.'portfolio-list/'.Destination::field_by_id($indhot->destinationId,'slug').'" class="goback-btn"><i class="fa fa-arrow-left"></i> Go back</a>
+                        </div>
                     </div>
                     <div class = "mt-4" id="lightgallery">
                         <div class="grid">
