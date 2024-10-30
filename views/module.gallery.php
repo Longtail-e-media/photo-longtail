@@ -351,15 +351,20 @@ $province = '';
 if (defined('HOME_PAGE')) {
     for ($i = 1; $i <= 7; $i++) {
         $destination_list = '';
+        $destination_nav = '';
 
         $provdest = Destination::get_destination_bypradesh($i);
 
         foreach ($provdest as $j => $indest) {
-            $destination_list .= '<li><a href="' . BASE_URL . 'portfolio-list/' . $indest->slug . '">' . $indest->title . '</a></li>';
+            $resGallery = Gallery::getParentgallery_by_destination($indest->id);
+            if(!empty($resGallery)){
+                $destination_nav = $provincedata["$i"];
+                $destination_list .= '<li><a href="' . BASE_URL . 'portfolio-list/' . $indest->slug . '">' . $indest->title . '</a></li>';
+            }
         }
         $province .= '
         <div class="province_one">
-			<h5>' . $provincedata["$i"] . '</h5>
+			<h5>' . $destination_nav . '</h5>
 			<ul class="province_one list-unstyled">
 				' . $destination_list . '
 			</ul>
