@@ -1538,11 +1538,7 @@ button.search_icons{
 div#dropdownList {
   position: absolute;
   background: #f9f3f1;
-<<<<<<< HEAD
-  width: 200px;
-=======
   width: max-content;
->>>>>>> 5597a2d2c09c3b7de391082d50689011d9869a00
   right: 0;
   padding-inline: 12px;
   font-weight: 300;
