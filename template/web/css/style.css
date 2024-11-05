@@ -2049,3 +2049,50 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
   width: 100%;
 
 }
+.svg-container{
+  position: relative;
+}
+#popover_karnali,#popover_gandaki,#popover_bagmati,#popover_province1,#popover_province2,#popover_province5,#popover_sudurpaschim{
+  background-color: rgba(242, 242, 242,0.8);
+  padding: 1rem;
+  border-radius: 9px;
+  display: none;
+}
+#popover_karnali{
+  position: absolute;
+  top: 15%;
+  left: 35%;
+}
+#popover_gandaki{
+  position: absolute;
+  top: 39%;
+  left: 52%;
+}
+#popover_bagmati{
+  position: absolute;
+  top: 52%;
+  right: 29.5%;
+}
+#popover_province1{
+  position: absolute;
+  top: 59%;
+  right: 16.5%;
+}
+#popover_province2{
+  position: absolute;
+  bottom: 9%;
+  right: 30.5%;
+}
+#popover_province5{
+  position: absolute;
+  bottom: 34%;
+  left: 30.5%;
+}
+#popover_sudurpaschim {
+  position: absolute;
+  top: 14%;
+  left: 15%;
+}
+.svg-container li{
+  list-style: none;
+}

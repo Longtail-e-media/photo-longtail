@@ -135,7 +135,60 @@
             Photo Longtail is a visionary photography agency that specializes in capturing the essence of hospitality.</p>
     </div>
     <div class="image_nepal mt-5">
-        <img alt="" class="w-50" src="image/nepal.svg" style="width: 100%;" /></div>
+        <!-- <img alt="" class="w-50" src="image/nepal.svg" style="width: 100%;" /> -->
+         <div class="svg-container">
+           <object data="http://localhost/longtail/photo-longtail/template/web/image/nepal.svg" type="image/svg+xml" id="svgObject"></object>
+           <div id="popover_karnali">
+             <ul class="p-0 m-0">
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+             </ul>
+           </div>
+           <div id="popover_gandaki">
+             <ul class="p-0 m-0">
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+             </ul>
+           </div>
+           <div id="popover_bagmati">
+             <ul class="p-0 m-0">
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+             </ul>
+           </div>
+           <div id="popover_province1">
+             <ul class="p-0 m-0">
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+             </ul>
+           </div>
+           <div id="popover_province2">
+             <ul class="p-0 m-0">
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+             </ul>
+           </div>
+           <div id="popover_province5">
+             <ul class="p-0 m-0">
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+             </ul>
+           </div>
+           <div id="popover_sudurpaschim">
+             <ul class="p-0 m-0">
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+               <li>Lorem, ipsum.</li>
+             </ul>
+           </div>
+         </div>
+      </div>
     <div class="container province_name d-flex justify-content-between mt-5 flex-wrap text-left">
         <jcms:module:gallery-province/>
     </div>
@@ -216,24 +269,34 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
-        // $("#modal-popup-video").modal('show');
-        // $('#modal-popup-video').on('hidden.bs.modal', function () {
-        //     $("#modal-popup-image").modal('show');
-        //     console.log("video closed")
-        //     $("#modal-popup-video iframe").attr("src", "");
-        // });
-        // if ($('#modal-popup-video')[0]) {
-        //     $("#modal-popup-image").modal('hide');
-        // } else {
-        //     $("#modal-popup-image").modal('show');
-        // }
+           // document.getElementById('svgObject').addEventListener('load',function(){
+            var svgDoc = document.getElementById('svgObject').contentDocument;
+            var karnali = svgDoc.getElementById('karnali');
+            var gandaki = svgDoc.getElementById('gandaki');
+            var bagmati = svgDoc.getElementById('bagmati');
+            var province1 = svgDoc.getElementById('province1');
+            var province2 = svgDoc.getElementById('province2');
+            var province5 = svgDoc.getElementById('province5');
+            var sudurpaschim = svgDoc.getElementById('sudurpaschim');
+            console.log();
 
-
-
-        // const myModal = new bootstrap.Modal('#modal-popup-image');
-        // myModal.show();
-
-        // const carousel = new bootstrap.Carousel('#myCarousel')
+            svgEvent(karnali,'popover_karnali');
+            svgEvent(gandaki,'popover_gandaki');
+            svgEvent(bagmati,'popover_bagmati');
+            svgEvent(province1,'popover_province1');
+            svgEvent(province2,'popover_province2');
+            svgEvent(province5,'popover_province5');
+            svgEvent(sudurpaschim,'popover_sudurpaschim');
+            
+          // });
+          function svgEvent(eventHolder,popover){
+            eventHolder.addEventListener('mouseover',function(){
+              document.getElementById(popover).style.display = 'block';
+            })
+            eventHolder.addEventListener('mouseout',function(){
+              document.getElementById(popover).style.display = 'none';
+            })
+          }
     });
 </script>
 </body>

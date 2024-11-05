@@ -164,12 +164,8 @@
             loadImages(pageCounter);
         }
         function beforeLoading(){
-            if(pageCounter != 1){
-                $('#loadMore').css('display','none');
-                $('.loader').css('display','block');
-            }else{
-                $('.loader').css('display','none');
-            }
+            $('#loadMore').css('display','none');
+            $('.loader').css('display','block');
         }
         function afterLoading(){
             $('#loadMore').css('display','block');
