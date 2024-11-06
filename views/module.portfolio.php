@@ -310,7 +310,7 @@ if (defined('HOME_PAGE')) {
     }
 
     $home_svg .= '
-        <div class="svg-container">
+        <div class="svg-container container">
             <object data="' . BASE_URL . 'template/web/image/nepal.svg" type="image/svg+xml" id="svgObject"></object>
             ' . $states . '
         </div>

@@ -2062,27 +2062,27 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 #popover_gandaki{
   position: absolute;
   top: 39%;
-  left: 52%;
+  left: 52.5%;
 }
 #popover_bagmati{
   position: absolute;
   top: 52%;
-  right: 29.5%;
+  right: 22.5%;
 }
 #popover_province1{
   position: absolute;
   top: 59%;
-  right: 16.5%;
+  right: 11.5%;
 }
 #popover_province2{
   position: absolute;
-  bottom: 9%;
-  right: 30.5%;
+  bottom: 15%;
+  right: 30%;
 }
 #popover_province5{
   position: absolute;
-  bottom: 34%;
-  left: 30.5%;
+  bottom: 38%;
+  left: 27%;
 }
 #popover_sudurpaschim {
   position: absolute;
