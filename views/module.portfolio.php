@@ -10,6 +10,16 @@ $provincedata = array(
     "7" => "Sudurpashchim"
 );
 
+$provinceDataId = array(
+    "1" => "popover_province1",
+    "2" => "popover_province2",
+    "3" => "popover_bagmati",
+    "4" => "popover_gandaki",
+    "5" => "popover_province5",
+    "6" => "popover_karnali",
+    "7" => "popover_sudurpaschim"
+);
+
 /**
  *      New Portfolio page
  */
@@ -31,7 +41,7 @@ if (defined('PORTFOLIO_PAGE')) {
 
         foreach ($provdest as $j => $indest) {
             $resGallery = Gallery::getParentgallery_by_destination($indest->id);
-            if(!empty($resGallery)){
+            if (!empty($resGallery)) {
                 $destination_nav = '
                     <button class="accordion-button ' . $collapsed . '" type="button" data-bs-toggle="collapse" data-bs-target="#collapse' . $i . '" aria-expanded="' . $expanded . '" aria-controls="collapse' . $i . '">
                     ' . $provincedata["$i"] . '
@@ -117,7 +127,7 @@ if (defined('PORTFOLIO_LIST_PAGE')) {
 
         foreach ($provdest as $j => $indest) {
             $resGallery = Gallery::getParentgallery_by_destination($indest->id);
-            if(!empty($resGallery)){
+            if (!empty($resGallery)) {
                 $destination_nav = '
                     <button class="accordion-button ' . $collapsed . ' type="button" data-bs-toggle="collapse" data-bs-target="#collapse' . $i . '" aria-expanded="' . $expanded . '" aria-controls="collapse' . $i . '">
                          ' . $provincedata["$i"] . '
@@ -252,7 +262,7 @@ if (defined('PORTFOLIO_DETAIL')) {
 
                     <div class="goback-btn-parent">
                         <div class="goback-btn-container">
-                        <a href="'.BASE_URL.'portfolio-list/'.Destination::field_by_id($indhot->destinationId,'slug').'" class="goback-btn"><i class="fa fa-arrow-left"></i> Get Back</a>
+                        <a href="' . BASE_URL . 'portfolio-list/' . Destination::field_by_id($indhot->destinationId, 'slug') . '" class="goback-btn"><i class="fa fa-arrow-left"></i> Get Back</a>
                         </div>
                     </div>
                     <div class = "mt-4" id="lightgallery">
@@ -268,3 +278,43 @@ if (defined('PORTFOLIO_DETAIL')) {
 }
 
 $jVars['module:portfolio-detail'] = $thegal;
+
+
+/**
+ *      Home Page Nepal SVG
+ */
+$home_svg = '';
+
+if (defined('HOME_PAGE')) {
+    $states = '';
+    for ($i = 1; $i <= 7; $i++) {
+        $provdest = Destination::get_destination_bypradesh($i);
+
+        $states_li = '';
+        foreach ($provdest as $j => $indest) {
+            $resGallery = Gallery::getParentgallery_by_destination($indest->id);
+            if (!empty($resGallery)) {
+                $states_li .= '<li>' . $indest->title . '</li>';
+            }
+        }
+
+        if (!empty($states_li)) {
+            $states .= '
+                <div id="' . $provinceDataId[$i] . '">
+                    <ul class="p-0 m-0">
+                        ' . $states_li . '
+                    </ul>
+                </div>
+            ';
+        }
+    }
+
+    $home_svg .= '
+        <div class="svg-container">
+            <object data="' . BASE_URL . 'template/web/image/nepal.svg" type="image/svg+xml" id="svgObject"></object>
+            ' . $states . '
+        </div>
+    ';
+}
+
+$jVars['module:portfolio-home-svg'] = $home_svg;
