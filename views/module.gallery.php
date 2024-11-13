@@ -362,13 +362,15 @@ if (defined('HOME_PAGE')) {
                 $destination_list .= '<li><a href="' . BASE_URL . 'portfolio-list/' . $indest->slug . '">' . $indest->title . '</a></li>';
             }
         }
-        $province .= '
-        <div class="province_one">
-			<h5>' . $destination_nav . '</h5>
-			<ul class="province_one list-unstyled">
-				' . $destination_list . '
-			</ul>
-		</div>';
+        if($destination_list){
+            $province .= '
+            <div class="province_one">
+                <h5>' . $destination_nav . '</h5>
+                <ul class="province_one list-unstyled">
+                    ' . $destination_list . '
+                </ul>
+            </div>';
+        }
 
     }
 }

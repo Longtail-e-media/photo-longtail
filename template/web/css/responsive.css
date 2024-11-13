@@ -1,0 +1,213 @@
+@media (max-width: 1300px) and (min-width: 1024px) {
+  /*portfolio page*/
+  .grid-item {
+    width: 32.3%;
+  }
+}
+@media (max-width: 1024px) and (min-width: 992px) {
+  /*index page*/
+  .gallery-img-conntainer {
+    height: 350px;
+  }
+  .image_slide .owl-carousel .owl-item img {
+    height: auto !important;
+    min-height: 650px;
+  }
+  /*portfolio page*/
+  .grid-item {
+    width: 32.3%;
+  }
+  /*career page*/
+  .career__form input[type="file"] {
+    width: 90%;
+  }
+}
+@media (max-width: 992px) and (min-width: 768px) {
+  /*index page*/
+  .gallery-parent {
+    gap: 4rem;
+  }
+  .res-nomedia-up {
+    display: flex !important;
+    margin: 0 !important;
+  }
+  .res-nomedia-down {
+    display: none !important;
+  }
+  .three-container {
+    width: auto;
+  }
+  .articlehomepage0 {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+  .navbar_onscroll .navbar-toggler {
+    margin-left: 10px;
+  }
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 2px;
+    background-color: white;
+    padding: 10px 40px 10px 30px;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+  }
+  .navbar-collapse li {
+    padding: 5px 10px;
+    text-align: left;
+    width: max-content;
+    margin: 0 !important;
+  }
+  /*portfolio page*/
+  .grid-item {
+    width: 32%;
+  }
+  /*career page*/
+  .career__form .car123 {
+    display: block;
+  }
+}
+@media (max-width: 768px) and (min-width: 577px) {
+  /*index page*/
+  .gallery-parent {
+    gap: 3rem;
+  }
+  .res-nomedia-up {
+    display: flex !important;
+    margin: 0 !important;
+  }
+  .res-nomedia-down {
+    display: none !important;
+  }
+  .three-container {
+    width: auto;
+  }
+  .articlehomepage0 {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  .navbar_onscroll .navbar-toggler {
+    margin-left: 10px;
+  }
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 2px;
+    background-color: white;
+    padding: 10px 40px 10px 30px;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+  }
+  .navbar-collapse li {
+    padding: 5px 10px;
+    text-align: left;
+    width: max-content;
+    margin: 0 !important;
+  }
+  /*portfolio page*/
+  .grid-item {
+    width: 47.9% !important;
+  }
+}
+@media (max-width: 577px) {
+  /*index page*/
+  .gallery-parent {
+    gap: 3rem;
+  }
+  .home-gallery-container {
+    margin: 5rem auto;
+  }
+  .res-nomedia-up {
+    display: flex !important;
+    margin: 0 !important;
+  }
+  .res-nomedia-down {
+    display: none !important;
+  }
+  .three-container {
+    width: auto;
+  }
+  .articlehomepage0 {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  .navbar_onscroll .navbar-toggler {
+    margin-left: 10px;
+  }
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 2px;
+    background-color: white;
+    padding: 10px 40px 10px 30px;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+  }
+  .navbar-collapse li {
+    padding: 5px 10px;
+    text-align: left;
+    width: max-content;
+    margin: 0 !important;
+  }
+  .gallery-img-conntainer {
+    margin: 0 !important;
+  }
+  .gallery-img-conntainer.no-media {
+    height: 300px;
+  }
+  .vid-container {
+    margin: 2rem 0 3rem 0;
+  }
+  .province_one {
+    flex-basis: 50%;
+    padding-left: 1rem;
+  }
+  .province_one h5 {
+    margin-top: 20px;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .province_one:nth-child(1),
+  .province_one:nth-child(4) {
+    order: 1;
+  }
+  .province_one:nth-child(2),
+  .province_one:nth-child(5) {
+    order: 2;
+  }
+  .province_one:nth-child(3) {
+    order: 3;
+  }
+  .res-home-gallery-text {
+    width: fit-content !important;
+  }
+  .all_over_nepal {
+    padding: 5rem 0;
+  }
+  .dropdown.search_dropdown input:focus {
+    width: 100px;
+}
+  /*portfolio page*/
+  .grid-item {
+    width: 93% !important;
+  }
+  /*career*/
+  .res-career-btn-down{
+    display: block;
+  }
+  .res-career-btn-up{
+    display: none;
+  }
+  .career__form input[type="file"]{
+    width: 90%;
+    margin-left: 10px;
+  }
+  /* .dropdown-filter-parent{
+    display: none !important;
+  } */
+}
