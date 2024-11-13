@@ -150,15 +150,12 @@ $('.rooms_other_slider.owl-carousel').owlCarousel({
 let uri = window.location.pathname;
 let pathName = uri.substring(uri.lastIndexOf('/'));
 const whiteNav = ["/", "/gallery-list", "/contact-us"];
-console.log(pathName);
 if (!whiteNav.includes(pathName)) {
     $('.navbar-expand-lg .navbar-nav .nav-link').addClass('black');
     $('.dropdown.search_dropdown img').addClass('filter-none');
     $('.dropdown-input').addClass('black').addClass('custom-placeholder');
-    console.log(true);
 } else {
     $('.navbar-expand-lg .navbar-nav .nav-link').removeClass('black');
     $('.dropdown.search_dropdown img').removeClass('filter-none');
     $('.dropdown-input').removeClass('black').removeClass('custom-placeholder');
-    console.log(false)
 }
