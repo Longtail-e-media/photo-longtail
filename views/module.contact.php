@@ -54,22 +54,22 @@ if (defined('CONTACT_PAGE')) {
               <div class="col-lg-6 col-md-6 col-sm-12 contact_background-color">
                 <h2 class="Contact_us">Message Us</h2>
                 <form action="" id="contact_form">
-                  <div class="mb-4">
-                    <input type="text" class="form-control" id="" name="name" aria-describedby="name" placeholder="Full Name*">
+                  <div class="mb-4 contact-form-input-abc">
+                    <input type="text" class="form-control" id="" name="name" aria-describedby="name" placeholder="Full Name">
                   </div>
-                  <div class="mb-4">
-                    <input type="email" class="form-control" id="" name="email" aria-describedby="name" placeholder="Email*">
+                  <div class="mb-4 contact-form-input-abc">
+                    <input type="email" class="form-control" id="" name="email" aria-describedby="name" placeholder="Email">
                   </div>
-                  <div class="mb-4">
+                  <div class="mb-4 contact-form-input-abc">
                     <input type="text" class="form-control" id="" name="contact" aria-describedby="name"
-                           placeholder="Contact No.*">
+                           placeholder="Contact No.">
                   </div>
-                  <div class="mb-4">
+                  <div class="mb-4 contact-form-input-abc">
                     <input type="Subject" class="form-control" id="" name="subject" aria-describedby="subject"
-                           placeholder="Subject*">
+                           placeholder="Subject">
                   </div>
-                  <div class="mb-4">
-                    <textarea class="form-control" id="textarea" rows="3" name="message" Placeholder="Message*"></textarea>
+                  <div class="mb-4 contact-form-input-abc">
+                    <textarea class="form-control" id="textarea" rows="3" name="message" Placeholder="Message"></textarea>
                   </div>
                   <div class="mb-4">
                     <div id="result_msg"></div>

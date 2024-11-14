@@ -29,7 +29,11 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden !important;
 }
-
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 body {
   background-color: rgba(247, 238, 235, 0.6509803922);
   font-family: var(--font-helvetika);
@@ -2131,4 +2135,23 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 }
 .res-career-btn-down {
   display: none;
+}
+.contact_form .contact-form-input-abc,.career__form .contact-form-input{
+  position: relative;
+}
+.contact_form .contact-form-input-abc::after{
+  content: "*";
+  font-size: 18px;
+  position: absolute;
+  color: red;
+  top: 5px;
+  right: 8px;
+
+}
+.career__form .contact-form-input::after{
+  content: '*';
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  color: red;
 }
