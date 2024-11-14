@@ -16,7 +16,7 @@
 
   <!-- start head script -->
   <link rel="stylesheet" href="css/be-style.css">
-  <script src="js/be-script.js"></script>
+  <!-- <script src="js/be-script.js"></script> -->
   <!-- end head script -->
 </head>
 
@@ -70,17 +70,17 @@
                 },
                 submitHandler: function (form) {
                     var recaptcha = $("#g-recaptcha-response").val();
-                if (recaptcha === "") {
-                    event.preventDefault();
-                    alert("Please check the recaptcha");
-                    return false;
-                }
+                    if (recaptcha === "") {
+                        event.preventDefault();
+                        alert("Please check the recaptcha");
+                        return false;
+                    }
                     var Frmval = $("form#contact_form").serialize();
                     $("button#submit").attr("disabled", "true").text('Processing...');
                     $.ajax({
                         type: "POST",
                         dataType: "JSON",
-                        url: "inquiry_mail.php",
+                        url: base_url + "enquery_mail.php",
                         data: "action=cont_form&" + Frmval,
                         success: function (data) {
                             var msg = eval(data);
