@@ -109,7 +109,10 @@
   }
   /*portfolio page*/
   .grid-item {
-    width: 47.9% !important;
+    width: 47.5% !important;
+  }
+  .grid-item.inner-images{
+    width: 33% !important;
   }
 }
 @media (max-width: 577px) {
@@ -210,4 +213,11 @@
   /* .dropdown-filter-parent{
     display: none !important;
   } */
+   /*inner page*/
+  .grid-item.inner-images{
+    width: 100% !important;
+   }
+   .img-gallery-container {
+    padding: 0 1.5rem;
+}
 }
