@@ -55,21 +55,21 @@ if (defined('CONTACT_PAGE')) {
                 <h2 class="Contact_us">Message Us</h2>
                 <form action="" id="contact_form">
                   <div class="mb-4">
-                    <input type="text" class="form-control" id="" name="name" aria-describedby="name" placeholder="Full Name">
+                    <input type="text" class="form-control" id="" name="name" aria-describedby="name" placeholder="Full Name*">
                   </div>
                   <div class="mb-4">
-                    <input type="email" class="form-control" id="" name="email" aria-describedby="name" placeholder="Email">
+                    <input type="email" class="form-control" id="" name="email" aria-describedby="name" placeholder="Email*">
                   </div>
                   <div class="mb-4">
                     <input type="text" class="form-control" id="" name="contact" aria-describedby="name"
-                           placeholder="Contact No.">
+                           placeholder="Contact No.*">
                   </div>
                   <div class="mb-4">
                     <input type="Subject" class="form-control" id="" name="subject" aria-describedby="subject"
-                           placeholder="Subject">
+                           placeholder="Subject*">
                   </div>
                   <div class="mb-4">
-                    <textarea class="form-control" id="textarea" rows="3" name="message" Placeholder="Message"></textarea>
+                    <textarea class="form-control" id="textarea" rows="3" name="message" Placeholder="Message*"></textarea>
                   </div>
                   <div class="mb-4">
                     <div id="result_msg"></div>
