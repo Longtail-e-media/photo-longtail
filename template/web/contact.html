@@ -55,9 +55,9 @@
                 errorElement: 'span',
                 errorClass: 'validate-has-error',
                 rules: {
-                    name: {required: true},
+                    name: {required: true, minlength: 2},
                     email: {required: true, email: true},
-                    contact: {required: true},
+                    contact: {required: true, number: true},
                     subject: {required: true},
                     message: {required: true}
                 },
@@ -85,7 +85,7 @@
                         success: function (data) {
                             var msg = eval(data);
                             $("button#submit").removeAttr("disabled").text('Submit');
-                            $('div#result_msg').html(msg.message).css('display', 'block').fadeOut(8000);
+                            $('div#result_msg').html(msg.message).css('display', 'block').addClass('alert alert-success mt-3').fadeOut(10000);
                             $("form#contact_form")[0].reset();
                         }
                     });
