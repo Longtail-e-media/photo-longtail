@@ -1,4 +1,10 @@
 @media (max-width: 1300px) and (min-width: 1024px) {
+  .res-home-gallery-text{
+    width: 90% !important;
+  }
+  .gallery-img-conntainer {
+    height: 450px;
+}
   /*portfolio page*/
   .grid-item {
     width: 32.3%;
