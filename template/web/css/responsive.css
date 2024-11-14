@@ -1,4 +1,8 @@
 @media (max-width: 1300px) and (min-width: 1024px) {
+  .career__form input[type="file"]{
+    width: 88%;
+    margin-left: 10px;
+  }
   .res-home-gallery-text{
     width: 90% !important;
   }
@@ -29,6 +33,10 @@
   }
 }
 @media (max-width: 992px) and (min-width: 768px) {
+  .career__form input[type="file"]{
+    width: 90%;
+    margin-left: 10px;
+  }
   /*index page*/
   .gallery-parent {
     gap: 4rem;
