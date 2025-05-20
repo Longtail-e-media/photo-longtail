@@ -52,7 +52,7 @@
 			$record->last_name		= $_REQUEST['last_name'];
 			$record->email			= $_REQUEST['email'];
 			$record->optional_email = $_REQUEST['optional_email'];
-            $record->hall_email     = (!empty($_REQUEST['hall_email'])) ? $_REQUEST['hall_email'] : '';
+			$record->hall_email     = (!empty($_REQUEST['hall_email'])) ? $_REQUEST['hall_email'] : '';
 			$record->hr_email = $_REQUEST['hr_email'];
 			$record->accesskey		= @randomKeys(25);
 			if($record->username!=$_REQUEST['username']){

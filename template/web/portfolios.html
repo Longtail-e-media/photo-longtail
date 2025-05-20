@@ -18,7 +18,8 @@
 
     <!-- start head script -->
     <link rel="stylesheet" href="css/be-style.css">
-    <!--<script src="js/be-script.js"></script>-->
+    <link rel="stylesheet" href="css/placeholder.min.css">
+    <!-- <script src="js/be-script.js"></script> -->
     <!-- end head script -->
 
 
@@ -73,9 +74,22 @@
 
 
 <jcms:module:portfolio-list/>
-
-
+<div id="masonry__grid">
+    <div class="row mx-3">
+    </div>
+  </div>
 <!-- gallerr images end -->
+ <!-- gallerr images end -->
+<template id ="skeleton">
+    <div class="col-md-4">
+        <div class="bg-transparent border-0 p-0 ph-item">
+            <div class="p-0 ph-col-12">
+                <div class="ph-picture rounded-2" style="height: 230px;"></div>
+            </div>
+        </div>
+    </div>
+</template>
+
 
 <!-- new footer -->
 <jcms:module:footer-booking/>
@@ -83,6 +97,14 @@
 
 
 <script>
+    let masonry = document.querySelector("#masonry__grid .row");
+let gridItems = document.querySelectorAll(".grid .grid-item");
+let template = document.getElementById("skeleton");
+masonry.innerHTML = "";
+gridItems.forEach(() => {
+    masonry.append(template.content.cloneNode(true));
+});
+
 
     // lightGallery(document.getElementById('lightgallery'), {
     //     plugins: [lgZoom, lgThumbnail],
@@ -113,6 +135,8 @@
 
 <script>
     $(window).on('load', function () {
+        $("#masonry__grid").css('display','none');
+        $(".grid").css('display','block');
         console.log('window load');
         var $grid = $('.grid').masonry({
             itemSelector: '.grid-item',

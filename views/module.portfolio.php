@@ -211,7 +211,7 @@ if (defined('PORTFOLIO_LIST_PAGE')) {
                 </div>
             </div>
             <div class = "col-md-12 col-sm-12 mt-5 img-gallery-container">
-                <div class="grid" data-masonry= \'{ "itemSelector": ".grid-item" }\'>
+                <div class="grid" style="display:none;" data-masonry= \'{ "itemSelector": ".grid-item" }\'>
                 <div class="grid-sizer"></div>
                     ' . $hotedettail . '
                 </div>
@@ -266,7 +266,7 @@ if (defined('PORTFOLIO_DETAIL')) {
                         </div>
                     </div>
                     <div class = "mt-4" id="lightgallery">
-                        <div class="grid">
+                        <div class="grid"style="display:none;">
                             <div class="grid-sizer"></div>
                             ' . $gallcoll . '
                         </div>

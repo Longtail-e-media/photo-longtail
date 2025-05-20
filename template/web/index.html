@@ -32,15 +32,6 @@
 <!-- date picker end -->
 
 
-<!-- image Slider -->
-<div class="image_slide">
-    <div class="owl-carousel image__slider owl-theme">
-        <jcms:module:slideshow/>
-    </div>
-
-</div>
-<!-- image Slider end -->
-
 <!-- about_us section -->
 
 <jcms:module:home-article/>
@@ -75,7 +66,7 @@
 
         <div class="position-relative gallery-img-conntainer">
             <div class="image-holder">
-                <a href="./portfolio"><img src="./image/1.jpg" alt=""></a>
+                <a href="./portfolio"><img src="./image/ps.jpeg" alt=""></a>
                 <div class="position-absolute res-home-gallery-text">
                     Photoshoot
                 </div>
@@ -90,7 +81,7 @@
 
         <div class="position-relative gallery-img-conntainer">
             <div class="image-holder">
-                <img src="./image/1.jpg" alt="">
+                <img src="./image/smp.jpg" alt="">
                 <div class="position-absolute res-home-gallery-text">
                     Social Media Platform
                 </div>
@@ -107,7 +98,7 @@
             <div class="image-holder">
                 <a href="https://www.youtube.com/@Longtailemedia" target="_blank">
                     <video autoplay loop muted playsinline defaultmuted preload="auto">
-                        <source src="./video/Lo Mustang Himalayan Resort_Slideshow.mov" type="video/webm">
+                        <source src="video/video.mp4" type="video/webm">
                         Your browser does not support the video tag.
                     </video>
                 </a>
@@ -223,13 +214,13 @@
         var province5 = svgDoc.getElementById('lumbini');
         var sudurpaschim = svgDoc.getElementById('sudurpaschim');
 
-        if(karnali) svgEvent(karnali, 'popover_karnali');
-        if(gandaki) svgEvent(gandaki, 'popover_gandaki');
-        if(bagmati) svgEvent(bagmati, 'popover_bagmati');
-        if(province1) svgEvent(province1, 'popover_province1');
-        if(province2) svgEvent(province2, 'popover_province2');
-        if(province5) svgEvent(province5, 'popover_province5');
-        if(sudurpaschim) svgEvent(sudurpaschim, 'popover_sudurpaschim');
+        if (karnali) svgEvent(karnali, 'popover_karnali');
+        if (gandaki) svgEvent(gandaki, 'popover_gandaki');
+        if (bagmati) svgEvent(bagmati, 'popover_bagmati');
+        if (province1) svgEvent(province1, 'popover_province1');
+        if (province2) svgEvent(province2, 'popover_province2');
+        if (province5) svgEvent(province5, 'popover_province5');
+        if (sudurpaschim) svgEvent(sudurpaschim, 'popover_sudurpaschim');
 
         // });
         function svgEvent(eventHolder, popover) {

@@ -14,7 +14,7 @@ if($Records) {
                     $reslide.='
                     <div class="item">
                     <h1>'.$RecRow->title.'</h1>
-                   <p>Your partner in promotion</p>
+                    <p>Your partner in promotion</p>
             <img src="'.IMAGE_PATH.'slideshow/'.$RecRow->image.'" alt="'.$RecRow->title.'">
           </div>
     

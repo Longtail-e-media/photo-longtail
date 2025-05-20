@@ -14,12 +14,12 @@
     <link rel="stylesheet" href='//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css'>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link type="text/css" rel="stylesheet"
-          href='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery-bundle.min.css'/>
+    <link type="text/css" rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery-bundle.min.css'/>
+    <link rel="stylesheet" href="css/placeholder.min.css">
 
     <!-- start head script -->
     <link rel="stylesheet" href="css/be-style.css">
-    <!--<script src="js/be-script.js"></script>-->
+    <!-- <script src="js/be-script.js"></script> -->
     <!-- end head script -->
 
 
@@ -74,7 +74,19 @@
 
 
 <jcms:module:portfolio-detail/>
-
+<div id="masonry__grid">
+    <div class="row mx-3">
+    </div>
+  </div>
+<template id ="skeleton">
+    <div class="col-md-4">
+        <div class="bg-transparent border-0 p-0 ph-item">
+            <div class="p-0 ph-col-12">
+                <div class="ph-picture rounded-2" style="height: 230px;"></div>
+            </div>
+        </div>
+    </div>
+</template>
 
 <!-- gallerr images end -->
 
@@ -84,6 +96,15 @@
 
 
 <script>
+
+let masonry = document.querySelector("#masonry__grid .row");
+let gridItems = document.querySelectorAll(".grid .grid-item");
+let template = document.getElementById("skeleton");
+masonry.innerHTML = "";
+gridItems.forEach(() => {
+    masonry.append(template.content.cloneNode(true));
+});
+
     //     lightGallery(document.getElementById('customize-thumbnails-gallery'), {
     //     // Add a custom class to apply style only for the particular gallery
     //     addClass: 'lg-custom-thumbnails',
@@ -120,11 +141,12 @@
 <script src='https://code.jquery.com/ui/1.13.2/jquery-ui.js'></script>
 <script src="js/index.js"></script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js'></script>
 
 <script>
     $(window).on('load', function () {
-        console.log('window load');
+     $("#masonry__grid").css('display','none');
+      $(".grid").css('display','block');
         var $grid = $('.grid').masonry({
             itemSelector: '.grid-item',
             percentPosition: true,

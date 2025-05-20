@@ -161,8 +161,11 @@ function MetaTagsFor_SEO()
         $schema .= ',' . $config->schema_code;
     }
     $schema .= '}</script>';
-
-
+        // pr($addtitle);
+    if($addtitle=='Portfolio'){
+        $addtitle=$config->sitetitle;
+        $addsep='';
+    }
     $seoSources = '<title>' . $addtitle . $addsep . $sitetitle . '</title>' . "\n";
     $seoSources .= '<meta charset="utf-8">' . "\n";
     $seoSources .= '<meta http-equiv="X-UA-Compatible" content="IE=edge">' . "\n";
