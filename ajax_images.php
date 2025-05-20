@@ -7,7 +7,7 @@ $siteRegulars = Config::find_by_id(1);
 
 // Pagination settings
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-$limit = 12; // Number of images per page
+$limit = 6; // Number of images per page
 $offset = ($page - 1) * $limit;
 
 // Query to fetch random images from the tbl_gallery_images table
@@ -25,28 +25,28 @@ if (!empty($desthot)) {
         $propertySlug = Gallery::field_by_id($indhot->galleryid, 'slug');
         if (file_exists($file_path) and !empty($indhot->image)) {
             echo ' 
-                    <div class="grid-item">
+                <div class="grid-item">
                     <div class="zoom-img-container" id="lightGallery'.$idIncrement.'">
                         <a href="' . IMAGE_PATH . 'gallery/galleryimages/' . $indhot->image . '" class="zoom-img">
                             <img src="' . IMAGE_PATH . 'gallery/galleryimages/' . $indhot->image . '" class="gallery-image"/>
                         </a>
                     </div>
-                        <a href="' . BASE_URL . 'portfolio/' . $propertySlug . '">
+                    <a href="' . BASE_URL . 'portfolio/' . $propertySlug . '">
                         <div class="fortitle gallery-img-title">' . $indhot->title . '</div>
                         <div class="forname gallery-img-content">' . $propertyName . '</div>
-                        </a>
-                     </div>
-                 ';
+                    </a>
+                 </div>
+             ';
         } else {
             echo ' 
-                    <div class="grid-item">
-                        <a href="' . BASE_URL . 'portfolio/' . $propertySlug . '">
-                            <div class="fortitle">' . $indhot->title . '</div>
-                            <div class="forname">' . $indhot->title . '</div>
-                            <img src="' . IMAGE_PATH . 'preference/other/' . $siteRegulars->other_upload . '" />
-                        </a>
-                     </div>
-                ';
+                <div class="grid-item">
+                    <a href="' . BASE_URL . 'portfolio/' . $propertySlug . '">
+                        <div class="fortitle">' . $indhot->title . '</div>
+                        <div class="forname">' . $indhot->title . '</div>
+                        <img src="' . IMAGE_PATH . 'preference/other/' . $siteRegulars->other_upload . '" />
+                    </a>
+                 </div>
+            ';
         }
     }
 }
