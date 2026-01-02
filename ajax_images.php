@@ -12,6 +12,7 @@ $offset = ($page - 1) * $limit;
 
 // Query to fetch random images from the tbl_gallery_images table
 $sql = "SELECT * FROM tbl_gallery_images ORDER BY RAND() LIMIT $limit OFFSET $offset";
+// $sql = "SELECT * FROM tbl_gallery_images ORDER BY sortorder DESC LIMIT $limit OFFSET $offset";
 $desthot = GalleryImage::find_by_sql($sql);
 
 // Check if there are results
@@ -25,28 +26,30 @@ if (!empty($desthot)) {
         $propertySlug = Gallery::field_by_id($indhot->galleryid, 'slug');
         if (file_exists($file_path) and !empty($indhot->image)) {
             echo ' 
-                <div class="grid-item">
+                    <div class="grid-item">
                     <div class="zoom-img-container" id="lightGallery'.$idIncrement.'">
                         <a href="' . IMAGE_PATH . 'gallery/galleryimages/' . $indhot->image . '" class="zoom-img">
-                            <img src="' . IMAGE_PATH . 'gallery/galleryimages/' . $indhot->image . '" class="gallery-image"/>
+                            <!--<img src="' . IMAGE_PATH . 'gallery/galleryimages/' . $indhot->image . '" class="gallery-image"/>-->
+                            <!-- using CDN for image -->
+                            <img src="https://ik.imagekit.io/1jwfh3p6k9/gallery/galleryimages/' . $indhot->image . '?f-auto" class="gallery-image"/>
                         </a>
                     </div>
-                    <a href="' . BASE_URL . 'portfolio/' . $propertySlug . '">
-                        <div class="fortitle gallery-img-title">' . $indhot->title . '</div>
-                        <div class="forname gallery-img-content">' . $propertyName . '</div>
-                    </a>
-                 </div>
-             ';
+                        <a href="' . BASE_URL . 'portfolio/' . $propertySlug . '">
+                            <div class="fortitle gallery-img-title">' . $indhot->title . '</div>
+                            <div class="forname gallery-img-content">' . $propertyName . '</div>
+                        </a>
+                     </div>
+                 ';
         } else {
             echo ' 
-                <div class="grid-item">
-                    <a href="' . BASE_URL . 'portfolio/' . $propertySlug . '">
-                        <div class="fortitle">' . $indhot->title . '</div>
-                        <div class="forname">' . $indhot->title . '</div>
-                        <img src="' . IMAGE_PATH . 'preference/other/' . $siteRegulars->other_upload . '" />
-                    </a>
-                 </div>
-            ';
+                    <div class="grid-item">
+                        <a href="' . BASE_URL . 'portfolio/' . $propertySlug . '">
+                            <div class="fortitle">' . $indhot->title . '</div>
+                            <div class="forname">' . $indhot->title . '</div>
+                            <img src="' . IMAGE_PATH . 'preference/other/' . $siteRegulars->other_upload . '" />
+                        </a>
+                     </div>
+                ';
         }
     }
 }

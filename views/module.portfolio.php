@@ -75,26 +75,27 @@ if (defined('PORTFOLIO_PAGE')) {
     $desthot = GalleryImage::find_by_sql("SELECT * FROM tbl_gallery_images ORDER BY RAND()");
 
     $thegalnew = '
-        <div class="row mt-6 position-relative">
-            <div class="hotel_hospitality text-center main-portfolio-title">
-                <h2>Hotels and Hospitality Portfolio</h2>
-                <p>Unleashing Hospitality Excellence: Journey Through Our Portfolio </p>
+    <div class="container-fluid">
+        <div class="row position-relative">
+
+            <div class = "col-md-12 col-sm-12 mt-5">
+
+                    <div class="dropdown-filter-parent">
+        <div class="filter-dropdown">
+            <div class="d-flex justify-content-lg-between justify-content-end " id="filterDropdown">
+                 <h2 id="hide_on_scroll">Hotels and Hospitality Portfolio</h2>
+                <button class="" onclick="dropFunction()">Search by location <span><i class="fa fa-chevron-down" id="dropIcon"></i></span></button>
             </div>
-            <div class="dropdown-filter-parent">
-                <div class="filter-dropdown position-absolute">
-                    <div class="d-flex justify-content-end" id="filterDropdown">
-                        <button class="" onclick="dropFunction()">Search by location <span><i class="fa fa-chevron-down" id="dropIcon"></i></span></button>
-                    </div>
-                    <div class="dropdownMenu hidden-menu" id="dropdownFilterMenu">
-                        <div class="accordion mt-4" id="accordionExample">
-                            ' . $accordion . '
-                        </div>
-                    </div>
+            <div class="dropdownMenu hidden-menu" id="dropdownFilterMenu">
+                <div class="accordion mt-4" id="accordionExample">
+                    ' . $accordion . '
                 </div>
             </div>
-            <div class = "col-md-12 col-sm-12 mt-5">
-                <div class="gallery img-gallery" id="masonry-grid"></div>
+        </div>
+                             </div>
+                <div class="gallery img-gallery mt-5" id="masonry-grid"></div>
             </div>
+        </div>
         </div>
     ';
 }

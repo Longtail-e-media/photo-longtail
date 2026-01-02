@@ -114,7 +114,7 @@ $header .= '
 $header = '
 
 <nav class="navbar navbar-expand-lg bg-transparent top-0 z-3 w-100  nav_bar py-0">
-    <div class="container-fluid position-absolute navbar__height translucent-navbar">
+    <div class="container-fluid navbar__height translucent-navbar">
           <div class="collapse navbar-collapse flex-grow-0 navbar_gaping" id="navbarSupportedContent">
       ' . $jVars['module:res-menu'] . '
       </div>

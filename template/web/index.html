@@ -32,6 +32,8 @@
 <!-- date picker end -->
 
 
+
+
 <!-- about_us section -->
 
 <jcms:module:home-article/>
@@ -214,13 +216,13 @@
         var province5 = svgDoc.getElementById('lumbini');
         var sudurpaschim = svgDoc.getElementById('sudurpaschim');
 
-        if (karnali) svgEvent(karnali, 'popover_karnali');
-        if (gandaki) svgEvent(gandaki, 'popover_gandaki');
-        if (bagmati) svgEvent(bagmati, 'popover_bagmati');
-        if (province1) svgEvent(province1, 'popover_province1');
-        if (province2) svgEvent(province2, 'popover_province2');
-        if (province5) svgEvent(province5, 'popover_province5');
-        if (sudurpaschim) svgEvent(sudurpaschim, 'popover_sudurpaschim');
+        if(karnali) svgEvent(karnali, 'popover_karnali');
+        if(gandaki) svgEvent(gandaki, 'popover_gandaki');
+        if(bagmati) svgEvent(bagmati, 'popover_bagmati');
+        if(province1) svgEvent(province1, 'popover_province1');
+        if(province2) svgEvent(province2, 'popover_province2');
+        if(province5) svgEvent(province5, 'popover_province5');
+        if(sudurpaschim) svgEvent(sudurpaschim, 'popover_sudurpaschim');
 
         // });
         function svgEvent(eventHolder, popover) {

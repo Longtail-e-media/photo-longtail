@@ -15,10 +15,9 @@ if($Records) {
                     <div class="item">
                     <h1>'.$RecRow->title.'</h1>
                     <p>Your partner in promotion</p>
-            <img src="'.IMAGE_PATH.'slideshow/'.$RecRow->image.'" alt="'.$RecRow->title.'">
-          </div>
-    
-                    
+                        <!--<img src="'.IMAGE_PATH.'slideshow/'.$RecRow->image.'" alt="'.$RecRow->title.'">-->
+                        <img src="https://ik.imagekit.io/1jwfh3p6k9/slideshow/'.$RecRow->image.'?f-auto" alt="'.$RecRow->title.'">
+                    </div>
                     ';
     
                 }

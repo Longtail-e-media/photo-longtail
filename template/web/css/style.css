@@ -32,7 +32,7 @@ html {
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
 }
 body {
   background-color: rgba(247, 238, 235, 0.6509803922);
@@ -1596,8 +1596,8 @@ div#dropdownList div > a:link {
 
 .grid-item {
   /*width: 24.4%;*/
-  width: 32%;
-  padding: 2px;
+  width: 50%;
+  padding: 0;
 }
 .grid-item img {
   width: 100%;
@@ -1870,7 +1870,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
 }
 .dropdown-filter-parent {
   position: sticky;
-  top: 64px;
+  top: 76px;
   z-index: 2;
   height: 38px;
   /* backdrop-filter: blur(10px);
@@ -1908,9 +1908,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
   padding: 0 10px;
   margin: 25px 0;
 }
-.gallery-image {
-  border-radius: 9px;
-}
+
 .accordion-header.accord-title button {
   padding: 10px 20px;
   font-size: 14px;
@@ -1958,6 +1956,8 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
   width: auto;
   left: 59px;
   transform: translate(0, 0);
+    display:none;
+
 }
 .image_slide p {
   position: absolute;
@@ -2026,7 +2026,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.7288165266106443) 0%, rgba(0,0,
   }
 }
 .main-portfolio-title {
-  margin: 3rem 0;
+  margin: 3rem 0 0;
 }
 .validate-has-error:not(input) {
   font-size: 12px;
@@ -2176,4 +2176,27 @@ display:none;
 .img-gallery .gallery-img-content{
     font-size:14px;
     margin-top:5px;
+}
+
+.gallery.img-gallery > .grid-item {
+    padding: 5px !important;
+    margin: 0 !important;
+}
+.gallery.img-gallery{
+    padding:0 !important;
+}
+
+.gallery.img-gallery{
+    div[class*="gallery-img"]{
+        color: white;
+        position:absolute;
+        bottom:10px;
+        left:15px;
+        opacity:0;
+        transition: opacity .3s ease-in-out;
+    }
+}
+
+.gallery.img-gallery .grid-item:hover  div[class*="gallery-img"]{
+   opacity:1;
 }

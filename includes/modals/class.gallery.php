@@ -126,7 +126,7 @@ class Gallery extends DatabaseObject
     static function find_all()
     {
         global $db;
-        return self::find_by_sql("SELECT * FROM " . self::$table_name . " ORDER BY sortorder ASC");
+        return self::find_by_sql("SELECT * FROM " . self::$table_name . " ORDER BY sortorder DESC ");
     }
 
     //Find a single row in the database where id is provided.

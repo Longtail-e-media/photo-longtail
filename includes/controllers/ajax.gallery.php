@@ -103,7 +103,8 @@
 				$Gallery->homepage     	= !empty($_REQUEST['homepage'])?$_REQUEST['homepage']:0;
 				$Gallery->status		= 1;
 				$Gallery->galleryid		= $galleryid;
-				$Gallery->sortorder		= GalleryImage::find_maximum_byparent("sortorder",$galleryid);														
+				// $Gallery->sortorder		= GalleryImage::find_maximum_byparent("sortorder",$galleryid);														
+				$Gallery->sortorder		= GalleryImage::find_maximum();														
 				$Gallery->registered	= registered();						
 				$db->begin();						
 				$res   =  $Gallery->save();
@@ -199,8 +200,9 @@
 			$db->begin();  		    	
 			$res =  $db->query("DELETE FROM tbl_gallery_images WHERE id='{$id}'");
 			if($res):$db->commit();	else: $db->rollback();endif;
-			reOrderSub("tbl_gallery_images", "sortorder", "galleryid", $record->galleryid);					
-			echo json_encode(array("action"=>"success"));	
+// 			reOrderSub("tbl_gallery_images", "sortorder", "galleryid", $record->galleryid);	
+            reOrder("tbl_galleries", "sortorder");						
+			echo json_encode(array("action"=>"success", "message"=>"success"));	
 		break;
 		
 		case "toggleStatusSubimage":
@@ -240,8 +242,50 @@
 			$record = GalleryImage::find_by_id($id);
 			$sortIds = $_REQUEST['sortIds'];
 			
-			datatableReordering('tbl_gallery_images', $sortIds, "sortorder", 'galleryid', $record->galleryid);
+			// datatableReordering('tbl_gallery_images', $sortIds, "sortorder", 'galleryid', $record->galleryid);
+			datatableReordering('tbl_gallery_images', $sortIds, "sortorder", '', '', 1);
 			echo json_encode(array("action"=>"success","message"=>$GLOBALS['basic']['sorted']));
-		break;		
+		break;	
+		
+		case "sortImages":
+			$id 	= $_REQUEST['id']; 	// IS a line containing ids starting with : sortIds
+			$record = GalleryImage::find_by_id($id);
+			$sortIds = $_REQUEST['sortIds'];
+			
+			datatableReordering('tbl_gallery_images', $sortIds, "sortorder", '','',1);
+			echo json_encode(array("action"=>"success","message"=>$GLOBALS['basic']['sorted']));
+		break;	
+		
+		case "listImageBulkToggleStatus":
+            $id = $_REQUEST['idArray'];
+            $allid = explode("|", $id);
+            $return = "0";
+            for($i=1; $i<count($allid); $i++){
+                $record = GalleryImage::find_by_id($allid[$i]);
+                $record->status = ($record->status == 1) ? 0 : 1 ;
+                $record->save();
+            }
+            echo "";
+        break;
+        
+        case "listImageBulkDelete":
+            $id = $_REQUEST['idArray'];
+            $allid = explode("|", $id);
+            $return = "0";
+            $db->begin();
+            for($i=1; $i<count($allid); $i++){
+                $res  = $db->query("DELETE FROM tbl_gallery_images WHERE id='".$allid[$i]."'");
+                $return = 1;
+            }
+            if($res)$db->commit();else $db->rollback();
+            reOrder("tbl_galleries", "sortorder");
+
+            if($return==1):
+                $message  = sprintf($GLOBALS['basic']['deletedSuccess_bulk'], "Gallery");
+                echo json_encode(array("action"=>"success","message"=>$message));
+            else:
+                echo json_encode(array("action"=>"error","message"=>$GLOBALS['basic']['noRecords']));
+            endif;
+        break;
 	}
 ?>

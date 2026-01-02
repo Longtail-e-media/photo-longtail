@@ -211,8 +211,10 @@
 }
   /*portfolio page*/
   .grid-item {
-    width: 93% !important;
+    width: 100% !important;
   }
+
+
   /*career*/
   .res-career-btn-down{
     display: block;

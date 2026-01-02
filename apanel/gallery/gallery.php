@@ -320,6 +320,10 @@ if (isset($_GET['page']) && $_GET['page'] == "gallery" && isset($_GET['mode']) &
         });
         // ]]>
     </script>
+    
+    <?php elseif (isset($_GET['mode']) && $_GET['mode'] == "imagesList"): 
+        include_once('listImages.php');
+    ?>
 
 <?php endif;
 include("gallery_images.php");

@@ -19,6 +19,17 @@
                 showMessage(msg.action, msg.message);
             }
         });
+
+        oTable = $('#exampleImages').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers"
+        }).rowReordering({
+            sURL: "<?php echo BASE_URL;?>includes/controllers/ajax.gallery.php?action=sortImages",
+            fnSuccess: function (message) {
+                var msg = jQuery.parseJSON(message);
+                showMessage(msg.action, msg.message);
+            }
+        });
     });
 
     /*************************** Shorting Sub Image Gallery Postion *******************************/
@@ -61,8 +72,8 @@
             onValidationComplete: function (form, status) {
                 if (status == true) {
                     $('#btn-submit').attr('disabled', 'true');
-                    for ( instance in CKEDITOR.instances )
-                    CKEDITOR.instances[instance].updateElement();
+                    for (instance in CKEDITOR.instances)
+                        CKEDITOR.instances[instance].updateElement();
                     var action = ($('#idValue').val() == 0) ? "action=add&" : "action=edit&";
                     var data = $('#gallery_frm').serialize();
                     queryString = action + data;
@@ -242,9 +253,11 @@
     function viewsubimagelist(Re) {
         window.location.href = "<?php echo ADMIN_URL?>gallery/galleryImageList/" + Re;
     }
+
     function viewsubimagelistHome(Re) {
         window.location.href = "<?php echo ADMIN_URL?>gallery/galleryImageListHome/" + Re;
     }
+
     /******************************** Remove User saved Sub Gallery images ********************************/
     function deleteSavedimage(Re) {
         $('.MsgTitle').html('<?php echo sprintf($GLOBALS['basic']['deleteRecord_'], "image")?>');
@@ -321,8 +334,8 @@
                 $('#toggleImg' + Re).addClass("icon-check-circle-o");
             }
         });
-        
-                /*************************************** USer Homepage Status Toggler ******************************************/
+
+        /*************************************** USer Homepage Status Toggler ******************************************/
         $('.imageHomepageToggle').on('click', function () {
             var Re = $(this).attr('rowId');
             var status = $(this).attr('status');
@@ -391,5 +404,162 @@
             });
         });
     }
+
+
+
+    function imageListStatusToggler(Id) {
+        var rowRec = $('#imgHolder_' + Id);
+        var status = rowRec.attr('status');
+        newStatus = (status == 1) ? 0 : 1;
+        $.ajax({
+            type: "POST",
+            url: getLocation(),
+            data: "action=toggleStatusSubimage&id=" + Id,
+            success: function (msg) {
+            }
+        });
+        $(this).attr({'status': newStatus});
+        if (status == 1) {
+            rowRec.removeClass("bg-green").addClass("bg-red");
+            $(this).attr("data-original-title", "Click to Publish");
+        } else {
+            rowRec.removeClass("bg-red").addClass("bg-green");
+            $(this).attr("data-original-title", "Click to Un-publish");
+        }
+    }
+
+    function imageListDelete(Re) {
+        $('.MsgTitle').html('<?php echo sprintf($GLOBALS['basic']['deleteRecord_'], "Image")?>');
+        $('.pText').html('Click on yes button to delete this image permanently.!!');
+        $('.divMessageBox').fadeIn();
+        $('.MessageBoxContainer').fadeIn(1000);
+
+        $(".botTempo").on("click", function () {
+            var popAct = $(this).attr("id");
+            if (popAct == 'yes') {
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: getLocation(),
+                    data: 'action=deleteSubimage&id=' + Re,
+                    success: function (data) {
+                        var msg = eval(data);
+                        showMessage(msg.action, msg.message);
+                        $('#' + Re).remove();
+                        reStructureList(getTableId());
+                    }
+                });
+            } else {
+                Re = null;
+            }
+            $('.divMessageBox').fadeOut();
+            $('.MessageBoxContainer').fadeOut(1000);
+        });
+    }
+
+    function listImageDeleteSelectedRecords(idArray) {
+        $.ajax({
+            type: "POST",
+            dataType: "JSON",
+            url: getLocation(),
+            data: "action=listImageBulkDelete&idArray=" + idArray,
+            success: function (data) {
+                var msg = eval(data);
+                if (msg.action == 'success') {
+                    showMessage(msg.action, msg.message);
+                    var myMessage = idArray.split("|");
+                    var counter = myMessage.length;
+                    for (i = 1; i < counter; i++) {
+                        $('#' + myMessage[i]).remove();
+                        reStructureList(getTableId());
+                    }
+                }
+                if (msg.action == 'error') {
+                    showMessage(msg.action, msg.message);
+                }
+            }
+        });
+    }
+
+    function checkIfAnyCheckBoxChecked() {
+        var countCheckBox = 0;
+        $.each($("input.bulkCheckbox:checked"), function () {
+            countCheckBox++;
+        });
+        if (countCheckBox > 0) {
+        } else {
+            showMessage('warning', 'Please select at least on row!!.');
+            return false;
+        }
+    }
+
+    $(function () {
+        $('#apply_btn').on("click", function () {
+            var action = $('#groupTaskField').val();
+            if (action == '0') {
+                showMessage('warning', 'Please select an action!!.');
+            }
+            var idArray = '0';
+            $('.bulkCheckbox').each(function () {
+                if ($(this).is(":checked")) {
+                    idArray += "|" + $(this).attr('bulkId');
+                }
+            });
+            checkIfAnyCheckBoxChecked();
+            if (idArray != '0') {
+
+                switch (action) {
+                    case "listImageToggleStatus":
+                        $('.record-checkbox').each(function () {
+                            if ($(this).is(":checked")) {
+                                $('#imgHolder_' + $(this).attr('bulkId')).html('<img src="../images/apanel/loadwheel.gif" />');
+                            }
+                        });
+                        $.ajax({
+                            type: "POST",
+                            url: getLocation(),
+                            data: "action=listImageBulkToggleStatus&idArray=" + idArray,
+                            success: function (msg) {
+                                var myMessage = idArray.split("|");
+                                var counter = myMessage.length;
+                                for (i = 1; i < counter; i++) {
+                                    var status = $('#imgHolder_' + myMessage[i]).attr('status');
+                                    newStatus = (status == 1) ? 0 : 1;
+                                    $('#imgHolder_' + myMessage[i]).attr({'status': newStatus});
+                                    if (status == 1) {
+                                        $('#imgHolder_' + myMessage[i]).removeClass("bg-green");
+                                        $('#imgHolder_' + myMessage[i]).addClass("bg-red");
+                                        $('#imgHolder_' + myMessage[i]).attr("data-original-title", "Click to Publish");
+                                    } else {
+                                        $('#imgHolder_' + myMessage[i]).removeClass("bg-red");
+                                        $('#imgHolder_' + myMessage[i]).addClass("bg-green");
+                                        $('#imgHolder_' + myMessage[i]).attr("data-original-title", "Click to Un-publish");
+                                    }
+                                }
+                                showMessage('success', 'Status has been toggled.');
+                            }
+                        });
+                        break;
+
+                    case "listImageDelete":
+                        $('.MsgTitle').html('Do you want to delete the selected rows?');
+                        $('.pText').html('Click on yes button to delete this rows permanently.!!');
+                        $('.divMessageBox').fadeIn();
+                        $('.MessageBoxContainer').fadeIn(1000);
+
+                        $(".botTempo").on("click", function () {
+                            var popAct = $(this).attr("id");
+                            if (popAct == 'yes') {
+                                listImageDeleteSelectedRecords(idArray);
+                            }
+                            $('.divMessageBox').fadeOut();
+                            $('.MessageBoxContainer').fadeOut(1000);
+                        });
+                        break;
+                } // end switch section
+                reStructureList(getTableId());
+            } // end if section
+        });  
+    })
 
 </script>
