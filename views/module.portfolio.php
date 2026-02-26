@@ -251,6 +251,13 @@ if (defined('PORTFOLIO_DETAIL')) {
                 ';
         endif;
     }
+    if (empty($gallcoll)) {
+        $gallcoll .= '
+            <div class="float-start">
+                <h2>Visuals coming soon</h2>
+            </div>
+        ';
+    }
 
     $thegal = '
         <div class="hotel_decrown_inn container-fluid">

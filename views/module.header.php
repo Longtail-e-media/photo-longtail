@@ -132,7 +132,7 @@ $header = '
   </nav>
             ';
 $optionlinks = '';
-$allrec = Gallery::find_all();
+$allrec = Gallery::find_all_active();
 foreach ($allrec as $indrec) {
     $destdet = !empty($indrec->destinationId) ? Destination::find_by_id($indrec->destinationId) : '';
     $dest = (!empty($destdet)) ? ', ' . $destdet->title : '';
