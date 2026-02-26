@@ -406,27 +406,35 @@
     }
 
 
+    $(document).on('click', '#exampleImages .toggle-status, #exampleImages .toggle-homepage-status', function () {
 
-    function imageListStatusToggler(Id) {
-        var rowRec = $('#imgHolder_' + Id);
-        var status = rowRec.attr('status');
-        newStatus = (status == 1) ? 0 : 1;
+        var rowRec = $(this);
+        var Id = rowRec.data('id');
+        var status = parseInt(rowRec.attr('data-status'));
+        var newStatus = status === 1 ? 0 : 1;
+
+        var actionType = rowRec.hasClass('toggle-homepage-status')
+            ? 'toggleStatusSubhome'
+            : 'toggleStatusSubimage';
+
         $.ajax({
             type: "POST",
             url: getLocation(),
-            data: "action=toggleStatusSubimage&id=" + Id,
-            success: function (msg) {
+            data: "action=" + actionType + "&id=" + Id,
+            success: function () {
+
+                rowRec
+                    .attr('data-status', newStatus)
+                    .removeClass('bg-green bg-red')
+                    .addClass(newStatus === 1 ? 'bg-green' : 'bg-red')
+                    .attr("data-original-title",
+                        newStatus === 1
+                            ? "Click to Unpublish"
+                            : "Click to Publish"
+                    );
             }
         });
-        $(this).attr({'status': newStatus});
-        if (status == 1) {
-            rowRec.removeClass("bg-green").addClass("bg-red");
-            $(this).attr("data-original-title", "Click to Publish");
-        } else {
-            rowRec.removeClass("bg-red").addClass("bg-green");
-            $(this).attr("data-original-title", "Click to Un-publish");
-        }
-    }
+    });
 
     function imageListDelete(Re) {
         $('.MsgTitle').html('<?php echo sprintf($GLOBALS['basic']['deleteRecord_'], "Image")?>');

@@ -14,6 +14,7 @@ $submoduleTablename = "tbl_gallery_images"; // Database table name
                 <th class="text-center"><input class="check-all" type="checkbox"/></th>
                 <th class="text-center">Title</th>
                 <th class="text-center">Property</th>
+                <th class="text-center">Homepage</th>
                 <th class="text-center"><?php echo $GLOBALS['basic']['action']; ?></th>
             </tr>
             </thead>
@@ -46,18 +47,29 @@ $submoduleTablename = "tbl_gallery_images"; // Database table name
                             echo set_na($parent->title);
                         ?>
                     </td>
-
+                    <td>
+                        <?php
+                        $hstatusImage = ($record->homepage == 1) ? "bg-green" : "bg-red";
+                        $hstatusText = ($record->homepage == 1) ? $GLOBALS['basic']['clickUnpub'] : $GLOBALS['basic']['clickPub'];
+                        ?>
+                        <a href="javascript:void(0);"
+                           class="btn small <?php echo $hstatusImage; ?> tooltip-button toggle-homepage-status"
+                           data-placement="top" data-original-title="<?php echo $hstatusText; ?>"
+                           data-status="<?php echo $record->homepage; ?>" id="himgHolder_<?php echo $record->id; ?>"
+                           data-id="<?php echo $record->id; ?>">
+                            <i class="glyph-icon icon-flag"></i>
+                        </a>
+                    </td>
                     <td class="text-center">
                         <?php
                         $statusImage = ($record->status == 1) ? "bg-green" : "bg-red";
                         $statusText = ($record->status == 1) ? $GLOBALS['basic']['clickUnpub'] : $GLOBALS['basic']['clickPub'];
                         ?>
                         <a href="javascript:void(0);"
-                           class="btn small <?php echo $statusImage; ?> tooltip-button"
-                           onClick="imageListStatusToggler(<?php echo $record->id; ?>)"
-                           data-placement="top" title="<?php echo $statusText; ?>"
-                           status="<?php echo $record->status; ?>" id="imgHolder_<?php echo $record->id; ?>"
-                           moduleId="<?php echo $record->id; ?>">
+                           class="btn small <?php echo $statusImage; ?> tooltip-button toggle-status"
+                           data-placement="top" data-original-title="<?php echo $statusText; ?>"
+                           data-status="<?php echo $record->status; ?>" id="imgHolder_<?php echo $record->id; ?>"
+                           data-id="<?php echo $record->id; ?>">
                             <i class="glyph-icon icon-flag"></i>
                         </a>
 

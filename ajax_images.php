@@ -11,8 +11,18 @@ $limit = 6; // Number of images per page
 $offset = ($page - 1) * $limit;
 
 // Query to fetch random images from the tbl_gallery_images table
-$sql = "SELECT * FROM tbl_gallery_images ORDER BY RAND() LIMIT $limit OFFSET $offset";
+// $sql = "SELECT * FROM tbl_gallery_images ORDER BY RAND() LIMIT $limit OFFSET $offset";
 // $sql = "SELECT * FROM tbl_gallery_images ORDER BY sortorder DESC LIMIT $limit OFFSET $offset";
+$sql = "
+SELECT gi.*
+FROM tbl_gallery_images gi
+JOIN tbl_galleries g ON gi.galleryid = g.id
+WHERE gi.homepage = 1
+  AND gi.status = 1
+  AND g.status = 1
+ORDER BY RAND()
+LIMIT $limit OFFSET $offset
+";
 $desthot = GalleryImage::find_by_sql($sql);
 
 // Check if there are results
