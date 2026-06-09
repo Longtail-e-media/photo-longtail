@@ -30,15 +30,15 @@ $submoduleTablename = "tbl_gallery_images"; // Database table name
                             <a href="javascript:void(0);" title="" class="user-ico clearfix" data-toggle="dropdown">
                                 <span><?php echo $record->title; ?></span>
                             </a>
-                            <!--<ul class="dropdown-menu">
+                            <ul class="dropdown-menu">
                                 <li>
                                     <div class="infobox info-bg mrg0B">
-                                        <img src="<?php echo IMAGE_PATH . 'gallery/galleryimages/thumbnails/' . $record->image; ?>"
-                                             style="width:100%"/>
+                                        <img src="<?php echo IMAGE_PATH . 'gallery/galleryimages/' . $record->image; ?>"
+                                             style="width:100%" loading="lazy"/>
                                         <span><?php echo $record->title; ?></span>
                                     </div>
                                 </li>
-                            </ul>-->
+                            </ul>
                         </div>
                     </td>
                     <td>

@@ -22,7 +22,8 @@
 
         oTable = $('#exampleImages').dataTable({
             "bJQueryUI": true,
-            "sPaginationType": "full_numbers"
+            "sPaginationType": "full_numbers",
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
         }).rowReordering({
             sURL: "<?php echo BASE_URL;?>includes/controllers/ajax.gallery.php?action=sortImages",
             fnSuccess: function (message) {

@@ -20,7 +20,7 @@ JOIN tbl_galleries g ON gi.galleryid = g.id
 WHERE gi.homepage = 1
   AND gi.status = 1
   AND g.status = 1
-ORDER BY RAND()
+ORDER BY gi.sortorder DESC
 LIMIT $limit OFFSET $offset
 ";
 $desthot = GalleryImage::find_by_sql($sql);
