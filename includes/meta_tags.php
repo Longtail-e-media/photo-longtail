@@ -163,7 +163,7 @@ function MetaTagsFor_SEO()
     $schema .= '}</script>';
         // pr($addtitle);
     if($addtitle=='Portfolio'){
-        $addtitle=$config->sitetitle;
+        $addtitle='';
         $addsep='';
     }
     $seoSources = '<title>' . $addtitle . $addsep . $sitetitle . '</title>' . "\n";
