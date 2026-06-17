@@ -1574,7 +1574,7 @@ div#dropdownList {
   border-radius: 0 0 14px 14px;
   top: 62px;
   padding-inline: 0;
-  z-index: -2;
+  z-index: 0;
 }
 div#dropdownList div{
   padding-block: 7px;
