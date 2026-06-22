@@ -9,21 +9,21 @@
     <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'>
     <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css'>
     <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lg-zoom.min.css'>
-    
+
     <!--<link rel="stylesheet" href="css/owl.carousel.min.css">-->
-    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css' 
-        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'
+          integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
-    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css' 
-        integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css'
+          integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href='//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css'>
-    
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <!--<link rel="stylesheet" href="css/placeholder.min.css">-->
-    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/placeholder-loading/0.7.0/placeholder-loading.min.css' 
-        integrity="sha512-SJ3F6J10BWdf4p2nz8CRkUzvlNvGulBf/tlWHfhxOJIcKgHVLAdYP+snnVyD7MhW8jXwcyRx0E5QNoIgNRoXeA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/placeholder-loading/0.7.0/placeholder-loading.min.css'
+          integrity="sha512-SJ3F6J10BWdf4p2nz8CRkUzvlNvGulBf/tlWHfhxOJIcKgHVLAdYP+snnVyD7MhW8jXwcyRx0E5QNoIgNRoXeA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--<link type="text/css" rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery-bundle.min.css'/>-->
 
     <!-- start head script -->
@@ -71,7 +71,7 @@
     </style>
 </head>
 
-<body>
+<body class="main-page">
 
 <!-- navbar -->
 <jcms:module:header/>
@@ -114,6 +114,9 @@
 <!-- demo template end -->
 
 <div id="loadMore" class="text-center"></div>
+
+<!-- LightGallery preload: all homepage images rendered server-side, hidden from view -->
+<jcms:module:portfolio-lg-preload/>
 
 
 <template id="skeleton">
@@ -162,19 +165,19 @@
 </script>
 
 <!--<script src="js/jquery.min.js"></script>-->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' 
-    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!--<script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js'></script>-->
 <!--<script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.umd.min.js'></script>-->
 <!--<script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.umd.min.js'></script>-->
 <script src='https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js'></script>
 
 <!--<script src="js/owl.carousel.min.js"></script>-->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js' 
-    integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!--<script src="js/bootstrap.bundle.min.js"></script>-->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js' 
-    integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js'
+        integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js'></script>
@@ -187,38 +190,38 @@
 <!-- ImagesLoaded to trigger layout after images are loaded -->
 <!--<script src='https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js'></script>-->
 <script>
-//     const heading = document.getElementById('hide_on_scroll');
+    //     const heading = document.getElementById('hide_on_scroll');
 
-//   window.addEventListener('scroll', () => {
-//     const rect = heading.getBoundingClientRect();
-//     if (rect.top >= 100 && rect.bottom >= 0) {
-//       heading.style.visibility = 'visible';
-//     } else {
-//       heading.style.visibility = 'hidden';
-//     }
-//   });
-      const heading = document.getElementById('hide_on_scroll');
+    //   window.addEventListener('scroll', () => {
+    //     const rect = heading.getBoundingClientRect();
+    //     if (rect.top >= 100 && rect.bottom >= 0) {
+    //       heading.style.visibility = 'visible';
+    //     } else {
+    //       heading.style.visibility = 'hidden';
+    //     }
+    //   });
+    const heading = document.getElementById('hide_on_scroll');
 
-function handleScrollAndResize() {
-  const rect = heading.getBoundingClientRect();
-  const isMobile = window.innerWidth <= 767;
+    function handleScrollAndResize() {
+        const rect = heading.getBoundingClientRect();
+        const isMobile = window.innerWidth <= 767;
 
-  if (isMobile) {
-    heading.style.display = 'none';
-  } else {
-    if (rect.top >= 100 && rect.bottom >= 0) {
-      heading.style.visibility = 'visible';
-      heading.style.display = 'block'; 
-    } else {
-      heading.style.visibility = 'hidden';
-      heading.style.display = 'block'; 
+        if (isMobile) {
+            heading.style.display = 'none';
+        } else {
+            if (rect.top >= 100 && rect.bottom >= 0) {
+                heading.style.visibility = 'visible';
+                heading.style.display = 'block';
+            } else {
+                heading.style.visibility = 'hidden';
+                heading.style.display = 'block';
+            }
+        }
     }
-  }
-}
 
-window.addEventListener('scroll', handleScrollAndResize);
-window.addEventListener('resize', handleScrollAndResize); 
-handleScrollAndResize();
+    window.addEventListener('scroll', handleScrollAndResize);
+    window.addEventListener('resize', handleScrollAndResize);
+    handleScrollAndResize();
 
 </script>
 
@@ -283,18 +286,29 @@ handleScrollAndResize();
             $('#masonry__grid').css('display', 'none');
         }
 
-        function loadImages(page = 1, onSuccess = () => {}) {
+// 1. Initialize LightGallery ONCE on the hidden preload container (all homepage images, server-rendered)
+        const preloadElement = document.getElementById('lg-preload');
+        let lgInstance = null;
+
+        if (preloadElement) {
+            lgInstance = lightGallery(preloadElement, {
+                selector: 'a',
+                appendSourceTo: 'body'
+            });
+        }
+
+        function loadImages(page = 1, onSuccess = () => {
+        }) {
             if (isLoading || allLoaded) return;
             isLoading = true;
 
             $.ajax({
-                url: base_url + 'ajax_images.php', // This is your PHP file that loads images
+                url: base_url + 'ajax_images.php',
                 data: {page: page},
                 beforeSend: function () {
                     beforeLoading();
                 },
                 success: function (data) {
-                    // Server returned nothing — no more pages to load
                     if ($.trim(data) === '') {
                         allLoaded = true;
                         isLoading = false;
@@ -303,37 +317,49 @@ handleScrollAndResize();
                     }
 
                     var $items = $(data);
-                    // Ensure all images are loaded before Masonry layout
                     $items.imagesLoaded(function () {
-                        // Append the items to Masonry and re-layout
                         $grid.append($items).masonry('appended', $items);
-                        $grid.masonry('layout'); // Explicitly call layout after appending
+                        $grid.masonry('layout');
+
                         afterLoading();
                         isLoading = false;
-                        onSuccess(); // Call the success callback
-
-                        /*$('#loadMoreImages').on('click', function () {
-                            loadMoreImages();
-                        })*/
-
-                        // $items.on('click', '.gallery-image', function(e) {
-                        //     e.preventDefault();
-                        //     let ancestorId = $(this).closest('.zoom-img-container').attr('id');
-                        //     triggerLightGallery(ancestorId);
-                        // });
-                        // console.log($items);
+                        onSuccess();
                     });
                 },
                 error: function () {
-                    // Network or server error — release the lock so the user can retry on next scroll
                     isLoading = false;
                     afterLoading();
                 }
             });
         }
 
-        // Load initial images
+// Load initial images
         loadImages();
+
+// 3. Intercept clicks on AJAX-loaded images and open the preloaded LightGallery at the correct index
+        $(document).on('click', '.zoom-img', function (e) {
+            e.preventDefault();
+            if (!lgInstance || !preloadElement) return;
+
+            var clickedHref = $(this).attr('href');
+            var $lgItems = $('#lg-preload a');
+            var index = -1;
+
+            $lgItems.each(function (i) {
+                if ($(this).attr('href') === clickedHref) {
+                    index = i;
+                    return false; // break
+                }
+            });
+
+            if (index !== -1) {
+                lgInstance.openGallery(index);
+            } else {
+                // Fallback: image not in preload set (edge case), open at 0
+                lgInstance.openGallery(0);
+            }
+        });
+
 
         // Infinite scroll
         $(window).on('scroll', function () {
@@ -343,19 +369,10 @@ handleScrollAndResize();
             }
         });
 
-        // Infinite scroll
-        // $(window).scroll(function () {
-        //     if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200) {
-        //         // var currentPage = parseInt($('#masonry-grid').attr('data-page')) || 1;
-        //         loadImages(pageCounter + 1);
-        //         $('#masonry-grid').attr('data-page', pageCounter + 1);
-        //     }
-        // });
-
 
     });
 
-    $(document).on('click', '.gallery-image', function (e) {
+    /*$(document).on('click', '.gallery-image', function (e) {
         e.preventDefault();
         let ancestorId = $(this).closest('.zoom-img-container').attr('id');
 
@@ -370,7 +387,7 @@ handleScrollAndResize();
         if (firstImage.length) {
             firstImage[0].click(); // Trigger click on the first image to open the gallery
         }
-    })
+    })*/
 </script>
 
 

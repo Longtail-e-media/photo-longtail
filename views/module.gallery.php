@@ -506,3 +506,35 @@ if (defined('GALLERY_LIST_PAGE')) {
 }
 
 $jVars['module:gallery-list-all'] = $thegalnew;
+
+
+/*------------ PORTFOLIO PAGE: LightGallery preload (all homepage images, no pagination) -------*/
+$lgPreload = '';
+if (defined('PORTFOLIO_PAGE')) {
+    $lgItems = '';
+    $sql = "
+        SELECT gi.image, gi.title, g.title AS gallery_title
+        FROM tbl_gallery_images gi
+        JOIN tbl_galleries g ON gi.galleryid = g.id
+        WHERE gi.homepage = 1
+          AND gi.status = 1
+          AND g.status = 1
+        ORDER BY gi.sortorder DESC
+    ";
+    $allHomeImages = GalleryImage::find_by_sql($sql);
+
+    if (!empty($allHomeImages)) {
+        foreach ($allHomeImages as $img) {
+            $file_path = SITE_ROOT . 'images/gallery/galleryimages/' . $img->image;
+            if (file_exists($file_path) && !empty($img->image)) {
+                $lgItems .= '<a href="' . IMAGE_PATH . 'gallery/galleryimages/' . $img->image . '"
+                    data-sub-html="<!--<h4>' . htmlspecialchars($img->title, ENT_QUOTES) . '</h4><p>' . htmlspecialchars($img->title, ENT_QUOTES) . '</p>-->">
+                </a>' . "\n";
+            }
+        }
+    }
+
+    $lgPreload = '<div id="lg-preload" style="display:none">' . $lgItems . '</div>';
+}
+
+$jVars['module:portfolio-lg-preload'] = $lgPreload;
