@@ -51,6 +51,96 @@
             max-width: 100%;
         }
 
+        /* ── LightGallery: push lg-outer left when sidebar is open ─────────── */
+        .lg-container.lg-with-sidebar .lg-outer {
+            width: calc(100% - 320px);
+            transition: width 0.3s ease;
+        }
+        .lg-outer {
+            transition: width 0.3s ease;
+        }
+
+        /* ── Toolbar info button — matches LG's own .lg-icon style ─────────── */
+        #lg-info-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #lg-info-btn.lg-info-active {
+            color: #fff;
+            opacity: 1 !important;
+        }
+        #lg-info-btn.hidden { display: none !important; }
+
+        /* ── Info sidebar ───────────────────────────────────────────────────── */
+        #lg-info-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 320px;
+            height: 100%;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            z-index: 10001;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            border-left: 1px solid rgba(255,255,255,0.08);
+        }
+        #lg-info-panel.lg-panel-open {
+            transform: translateX(0);
+        }
+
+        #lg-info-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 28px 22px;
+            scrollbar-width: thin;
+            scrollbar-color: #444 transparent;
+        }
+        #lg-info-content::-webkit-scrollbar { width: 4px; }
+        #lg-info-content::-webkit-scrollbar-thumb { background: #444; border-radius: 2px; }
+
+        #lg-info-gallery-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #777;
+            margin-bottom: 12px;
+        }
+        #lg-info-desc {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #bbb;
+        }
+        #lg-info-desc p  { margin-bottom: 12px; }
+        #lg-info-desc p:last-child { margin-bottom: 0; }
+        #lg-info-desc a  { color: #999; text-decoration: underline; }
+
+        /* ── Mobile: bottom drawer, no push ─────────────────────────────────── */
+        @media (max-width: 768px) {
+            .lg-container.lg-with-sidebar .lg-outer {
+                width: 100%;
+            }
+            #lg-info-panel {
+                top: auto;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                width: 100%;
+                height: 50vh;
+                max-height: 380px;
+                transform: translateY(100%);
+                border-radius: 14px 14px 0 0;
+                border-left: none;
+                border-top: 1px solid rgba(255,255,255,0.08);
+                box-shadow: 0 -6px 24px rgba(0,0,0,0.6);
+            }
+            #lg-info-panel.lg-panel-open {
+                transform: translateY(0);
+            }
+        }
 
     </style>
 </head>
@@ -105,26 +195,6 @@ gridItems.forEach(() => {
     masonry.append(template.content.cloneNode(true));
 });
 
-    //     lightGallery(document.getElementById('customize-thumbnails-gallery'), {
-    //     // Add a custom class to apply style only for the particular gallery
-    //     addClass: 'lg-custom-thumbnails',
-
-    //     // Remove the starting animations.
-    //     // This can be done by overriding CSS as well
-    //     appendThumbnailsTo: '.lg-outer',
-
-    //     animateThumb: false,
-    //     allowMediaOverlap: true,
-    // });
-
-    lightGallery(document.getElementById('lightgallery'), {
-        plugins: [lgZoom, lgThumbnail],
-        licenseKey: 'your_license_key',
-        speed: 500,
-        thumbnail: true,
-        // ... other settings
-    });
-
 </script>
 
 <script src="js/jquery.min.js"></script>
@@ -135,7 +205,6 @@ gridItems.forEach(() => {
 
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js'></script>
 <script src='https://code.jquery.com/ui/1.13.2/jquery-ui.js'></script>
@@ -175,11 +244,141 @@ gridItems.forEach(() => {
         });
     });
 </script>
-<Script>
-    lightGallery(document.getElementById('lightgallery'), {
-        selector: 'a',
-    })
-</Script>
+<script>
+    (function () {
+        var lgElement = document.getElementById('lightgallery');
+        if (!lgElement) return;
+
+        // ── Sidebar helpers ───────────────────────────────────────────────
+        function getLgContainer() {
+            return document.querySelector('.lg-container');
+        }
+
+        function toggleSidebar() {
+            var panel     = document.getElementById('lg-info-panel');
+            var btn       = document.getElementById('lg-info-btn');
+            var container = getLgContainer();
+            if (!panel || !container) return;
+
+            var opening = !panel.classList.contains('lg-panel-open');
+            panel.classList.toggle('lg-panel-open', opening);
+            container.classList.toggle('lg-with-sidebar', opening);
+            if (btn) btn.classList.toggle('lg-info-active', opening);
+
+            setTimeout(function () {
+                window.dispatchEvent(new Event('resize'));
+            }, 310);
+        }
+
+        function updateSidebar(index) {
+            var panel     = document.getElementById('lg-info-panel');
+            var btn       = document.getElementById('lg-info-btn');
+            var container = getLgContainer();
+            if (!panel) return;
+
+            var items    = lgElement.querySelectorAll('a');
+            var item     = items[index];
+            if (!item) return;
+
+            var galTitle = item.getAttribute('data-gallery-title') || '';
+            var galDesc  = item.getAttribute('data-gallery-desc')  || '';
+            var hasDesc  = galDesc.trim().length > 0;
+
+            document.getElementById('lg-info-gallery-title').textContent = galTitle;
+            document.getElementById('lg-info-desc').innerHTML = hasDesc ? galDesc : '';
+
+            if (hasDesc) {
+                if (btn) btn.classList.remove('hidden');
+                if (!panel.classList.contains('lg-panel-open')) {
+                    panel.classList.add('lg-panel-open');
+                    if (btn) btn.classList.add('lg-info-active');
+                    if (container) {
+                        container.classList.add('lg-with-sidebar');
+                        setTimeout(function () {
+                            window.dispatchEvent(new Event('resize'));
+                        }, 310);
+                    }
+                }
+            } else {
+                if (btn) btn.classList.add('hidden');
+                if (panel.classList.contains('lg-panel-open')) {
+                    panel.classList.remove('lg-panel-open');
+                    if (btn) btn.classList.remove('lg-info-active');
+                    if (container) {
+                        container.classList.remove('lg-with-sidebar');
+                        setTimeout(function () {
+                            window.dispatchEvent(new Event('resize'));
+                        }, 310);
+                    }
+                }
+            }
+        }
+
+        function injectSidebar(lgInstance) {
+            var oldPanel = document.getElementById('lg-info-panel');
+            if (oldPanel) oldPanel.parentNode.removeChild(oldPanel);
+            var oldBtn = document.getElementById('lg-info-btn');
+            if (oldBtn) oldBtn.parentNode.removeChild(oldBtn);
+
+            // Panel (no footer link — already on the gallery page)
+            var panel = document.createElement('div');
+            panel.id = 'lg-info-panel';
+            panel.innerHTML =
+                '<div id="lg-info-content">' +
+                    '<div id="lg-info-gallery-title"></div>' +
+                    '<div id="lg-info-desc"></div>' +
+                '</div>';
+            document.body.appendChild(panel);
+
+            // Toolbar button
+            var toolbar = document.querySelector('.lg-toolbar');
+            if (toolbar) {
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.id = 'lg-info-btn';
+                btn.className = 'lg-info-btn lg-icon hidden';
+                btn.setAttribute('aria-label', 'Toggle info panel');
+                btn.innerHTML =
+                    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" ' +
+                    'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+                        '<circle cx="12" cy="12" r="10"/>' +
+                        '<line x1="12" y1="8" x2="12" y2="8"/>' +
+                        '<line x1="12" y1="12" x2="12" y2="16"/>' +
+                    '</svg>';
+                toolbar.insertBefore(btn, toolbar.firstChild);
+                btn.addEventListener('click', toggleSidebar);
+            }
+
+            updateSidebar(lgInstance.index);
+        }
+
+        function removeSidebar() {
+            var container = getLgContainer();
+            if (container) container.classList.remove('lg-with-sidebar');
+            var panel = document.getElementById('lg-info-panel');
+            if (panel) panel.parentNode.removeChild(panel);
+            var btn = document.getElementById('lg-info-btn');
+            if (btn) btn.parentNode.removeChild(btn);
+        }
+
+        // ── Wire events BEFORE init ───────────────────────────────────────
+        var lgInstance = null;
+
+        lgElement.addEventListener('lgAfterOpen', function () {
+            injectSidebar(lgInstance);
+        });
+        lgElement.addEventListener('lgAfterSlide', function (e) {
+            updateSidebar(e.detail.index);
+        });
+        lgElement.addEventListener('lgBeforeClose', function () {
+            removeSidebar();
+        });
+
+        lgInstance = lightGallery(lgElement, {
+            selector: 'a',
+        });
+    })();
+</script>
 </body>
 
 </html>

@@ -240,14 +240,21 @@ if (defined('PORTFOLIO_DETAIL')) {
     $gallRec = GalleryImage::getGalleryImages($indhot->id);
 
     $gallcoll = '';
+    $galTitle = htmlspecialchars($indhot->title ?? '', ENT_QUOTES, 'UTF-8');
+    $galDesc  = htmlspecialchars($indhot->content ?? '', ENT_QUOTES, 'UTF-8');
     foreach ($gallRec as $row1) {
         $file_path = SITE_ROOT . 'images/gallery/galleryimages/' . $row1->image;
         if (file_exists($file_path) and !empty($row1->image)):
-            $gallcoll .= ' 
+            $gallcoll .= '
                 <div class="grid-item inner-images">
-                    <a href="' . IMAGE_PATH . 'gallery/galleryimages/' . $row1->image . '">
+                    <a href="' . IMAGE_PATH . 'gallery/galleryimages/' . $row1->image . '"'
+                        . ' data-sub-html="<h4>' . htmlspecialchars($row1->title, ENT_QUOTES, 'UTF-8') . '</h4>"'
+                        . ' data-gallery-title="' . $galTitle . '"'
+                        . ' data-gallery-desc="' . $galDesc . '"'
+                        . '>
                       <img src="' . IMAGE_PATH . 'gallery/galleryimages/' . $row1->image . '" alt="' . $row1->title . '" class="gallery-image">
-                    </a> </div>
+                    </a>
+                </div>
                 ';
         endif;
     }
