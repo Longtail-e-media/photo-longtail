@@ -511,9 +511,10 @@ $jVars['module:gallery-list-all'] = $thegalnew;
 /*------------ PORTFOLIO PAGE: LightGallery preload (all homepage images, no pagination) -------*/
 $lgPreload = '';
 if (defined('PORTFOLIO_PAGE')) {
+    global $db;
     $lgItems = '';
     $sql = "
-        SELECT gi.image, gi.title, g.title AS gallery_title
+        SELECT gi.image, gi.title, g.title AS gallery_title, g.content AS gallery_content, g.slug AS gallery_slug
         FROM tbl_gallery_images gi
         JOIN tbl_galleries g ON gi.galleryid = g.id
         WHERE gi.homepage = 1
@@ -521,16 +522,17 @@ if (defined('PORTFOLIO_PAGE')) {
           AND g.status = 1
         ORDER BY gi.sortorder DESC
     ";
-    $allHomeImages = GalleryImage::find_by_sql($sql);
+    $result = $db->query($sql);
 
-    if (!empty($allHomeImages)) {
-        foreach ($allHomeImages as $img) {
-            $file_path = SITE_ROOT . 'images/gallery/galleryimages/' . $img->image;
-            if (file_exists($file_path) && !empty($img->image)) {
-                $lgItems .= '<a href="' . IMAGE_PATH . 'gallery/galleryimages/' . $img->image . '"
-                    data-sub-html="<!--<h4>' . htmlspecialchars($img->title, ENT_QUOTES) . '</h4><p>' . htmlspecialchars($img->title, ENT_QUOTES) . '</p>-->">
-                </a>' . "\n";
-            }
+    while ($row = $db->fetch_array($result)) {
+        $file_path = SITE_ROOT . 'images/gallery/galleryimages/' . $row['image'];
+        if (file_exists($file_path) && !empty($row['image'])) {
+            $lgItems .= '<a href="' . IMAGE_PATH . 'gallery/galleryimages/' . $row['image'] . '"'
+                . ' data-sub-html="<h4>' . htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8') . '</h4>"'
+                . ' data-gallery-title="' . htmlspecialchars($row['gallery_title'], ENT_QUOTES, 'UTF-8') . '"'
+                . ' data-gallery-desc="' . htmlspecialchars($row['gallery_content'] ?? '', ENT_QUOTES, 'UTF-8') . '"'
+                . ' data-gallery-slug="' . htmlspecialchars($row['gallery_slug'] ?? '', ENT_QUOTES, 'UTF-8') . '"'
+                . '></a>' . "\n";
         }
     }
 
